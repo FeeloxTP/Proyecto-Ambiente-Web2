@@ -1,0 +1,14 @@
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\bin\Debug\net8.0\Proyecto.Infraestructure.deps.json
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\bin\Debug\net8.0\Proyecto.Infraestructure.runtimeconfig.json
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\bin\Debug\net8.0\Proyecto.Infraestructure.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\bin\Debug\net8.0\Proyecto.Infraestructure.pdb
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.csproj.AssemblyReference.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.AssemblyInfoInputs.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.AssemblyInfo.cs
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.csproj.CoreCompileInputs.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\refint\Proyecto.Infraestructure.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.pdb
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\Proyecto.Infraestructure.genruntimeconfig.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Infraestructure\obj\Debug\net8.0\ref\Proyecto.Infraestructure.dll

@@ -1,0 +1,59 @@
+﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  bg-black border-bottom box-shadow mb-3">
+    <div class="container-fluid">
+        <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">Electronics</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <!--bg-light backgroud icon -->
+            <span class="navbar-toggler-icon bg-light"></span>
+        </button>
+        <div class="navbar-collapse collapse   d-sm-inline-flex justify-content-between">
+            <ul class="navbar-nav flex-grow-1">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Mantenimientos
+                    </a>
+                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Pais")">Pais</a></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Producto" )">Producto </a></li>
+                        <li><hr class="dropdown-divider text-light"></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Provincia")">Provincia</a></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Tarjeta")">Tarjeta</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Procesos
+                    </a>
+                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index", "Venta")">Facturacion</a></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index", "Cierre" )">Anular Factura</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Reportes
+                    </a>
+                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-light" href="@Url.Action("ReporteVentas", "Reporte" )">Ventas </a></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("ReporteInventario", "Reporte")">Inventario</a></li>
+                        <li><hr class="dropdown-divider text-light"></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("ReporteGrafico", "Reporte")">Graficos </a></li>
+                        <li><a class="dropdown-item text-light" href="@Url.Action("", "Reporte")">Otros</a></li>
+
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Seguridad
+                    </a>
+                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item text-light" href="@Url.Action("Index", "Usuario")">Nuevo Usuario</a></li>
+
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

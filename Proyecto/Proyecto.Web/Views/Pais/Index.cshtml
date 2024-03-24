@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Proyecto.Application.DTOs.PaisDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create" asp-controller="Pais" class="btn btn-primary">Crear <spam class="bi-plus-circle-fill"></spam></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdPais)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr id="row_@item.IdPais">
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdPais)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descripcion)
+                </td>
+                <td>
+                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdPais }, new { @class = "btn btn-success    bi-eye-fill  " }) |
+                    <a data-ajax="true" class="btn btn-secondary  bi-info-circle"
+                       data-ajax-complete="onComplete"
+                       data-ajax-mode="replace"
+                       href='@Url.Action("Details", "Pais", new { id  = item.IdPais })'>
+                        Detalles
+                    </a>
+                    |
+                    
+                    <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.IdPais', '@item.Descripcion')">Eliminar</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+@section Scripts {
+    <script>
+
+        function onComplete(data) {
+            Swal.fire({
+                title: 'Detalles ',
+                html: data.responseText,
+                showDenyButton: false,
+                showOkButton: false,
+                showCancelButton: false,
+            })
+        };
+
+        function deleteItem(id, name) {
+            Swal.fire({
+                title: '¿Eliminar pais?',
+                html: '¿Estás seguro de que quieres eliminar al pais <strong>' + name + '</strong>?<br>Esta acción no se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminarlo',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const myRequest = "/Pais/DeleteConfirm?id=" + id;
+                    fetch(myRequest, {
+                        method: 'POST',
+                    }).then((response) => response.text())
+                        .then((text) => {
+                            console.log(text);
+                            // Eliminar la fila correspondiente de la tabla
+                            document.getElementById('row_' + id).remove();
+                            Swal.fire('¡Eliminado!', '', 'success');
+                        });
+                }
+            });
+        }
+
+
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

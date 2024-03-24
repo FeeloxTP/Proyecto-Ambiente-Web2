@@ -1,0 +1,15 @@
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\bin\Debug\net8.0\Proyecto.Application.deps.json
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\bin\Debug\net8.0\Proyecto.Application.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\bin\Debug\net8.0\Proyecto.Application.pdb
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\bin\Debug\net8.0\Proyecto.Infraestructure.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\bin\Debug\net8.0\Proyecto.Infraestructure.pdb
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.csproj.AssemblyReference.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.AssemblyInfoInputs.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.AssemblyInfo.cs
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.csproj.CoreCompileInputs.cache
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.csproj.CopyComplete
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\refint\Proyecto.Application.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.pdb
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\ref\Proyecto.Application.dll

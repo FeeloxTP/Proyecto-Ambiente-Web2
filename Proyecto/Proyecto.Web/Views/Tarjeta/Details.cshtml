@@ -1,0 +1,40 @@
+﻿@model Proyecto.Application.DTOs.TarjetaDTO
+
+<style>
+    .custom-dl dt {
+        text-align: left;
+    }
+</style>
+
+<div class="container">
+    <hr />
+    <dl class="row custom-dl">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IdTarjeta)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdTarjeta)
+        </dd>
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.DescripcionTarjeta)
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.DescripcionTarjeta)
+        </dd>
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd class="col-sm-8">
+            @{
+                string estado = Model.Estado ? "Activo" : "Inactivo";
+                @Html.Raw(estado)
+                ;
+            }
+        </dd>
+    </dl>
+</div>
+
+

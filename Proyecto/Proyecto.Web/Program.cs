@@ -7,6 +7,7 @@ using Proyecto.Infraestructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using Proyecto.Web;
+using Proyecto.Application.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,10 +18,18 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IRepositoryPais, RepositoryPais>();
 builder.Services.AddTransient<IServicesPais, ServicePais>();
 
+builder.Services.AddTransient<IRepositoryTarjeta, RepositoryTarjeta>();
+builder.Services.AddTransient<IServicesTarjeta, ServiceTarjeta>();
+
 // config Automapper
 builder.Services.AddAutoMapper(config =>
 {
     config.AddProfile<PaisProfile>();
+});
+
+builder.Services.AddAutoMapper(config =>
+{
+    config.AddProfile<TarjetaProfile>();
 });
 
 // Config Connection to SQLServer DataBase

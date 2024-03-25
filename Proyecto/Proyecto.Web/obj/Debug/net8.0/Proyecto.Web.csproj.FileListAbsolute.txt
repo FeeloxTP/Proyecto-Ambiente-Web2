@@ -274,3 +274,4 @@ C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\Proyecto.Infraestructure.dll
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\Proyecto.Application.pdb
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\Proyecto.Infraestructure.pdb
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\obj\Debug\net8.0\Proyecto.Web.sourcelink.json

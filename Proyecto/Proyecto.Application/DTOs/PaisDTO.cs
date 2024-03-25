@@ -11,6 +11,7 @@ public record PaisDTO
 {
     [Required(ErrorMessage = "{0} es requerido")]
     [Display(Name = "Código")]
+    [StringLength(2, ErrorMessage = "{0} debe tener como máximo {1} caracteres.")]
     public string IdPais { get; set; } = null!;
 
     [Display(Name = "Nombre País")]

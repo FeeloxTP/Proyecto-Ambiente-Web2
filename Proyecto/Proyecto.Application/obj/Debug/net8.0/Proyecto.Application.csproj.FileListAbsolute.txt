@@ -13,3 +13,4 @@ C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\ob
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\refint\Proyecto.Application.dll
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.pdb
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\ref\Proyecto.Application.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Application\obj\Debug\net8.0\Proyecto.Application.sourcelink.json

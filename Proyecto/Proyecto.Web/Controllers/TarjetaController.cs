@@ -1,0 +1,98 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using Proyecto.Application.DTOs;
+using Proyecto.Application.Services.Interfaces;
+
+namespace Proyecto.Web.Controllers;
+
+public class TarjetaController : Controller
+{
+    private readonly IServicesTarjeta _serviceTarjeta;
+
+    public TarjetaController(IServicesTarjeta serviceTarjeta)
+    {
+        _serviceTarjeta = serviceTarjeta;
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Index()
+    {
+        var collection = await _serviceTarjeta.ListAsync();
+        return View(collection);
+    }
+
+    // GET: BodegaController/Create
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    // POST: BodegaController/Create
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(TarjetaDTO dto)
+    {
+
+        if (!ModelState.IsValid)
+        {
+            // Lee del ModelState todos los errores que
+            // vienen para el lado del server
+            string errors = string.Join("; ", ModelState.Values
+                               .SelectMany(x => x.Errors)
+                               .Select(x => x.ErrorMessage));
+            return BadRequest(errors);
+        }
+
+        await _serviceTarjeta.AddAsync(dto);
+
+
+        return RedirectToAction("Index");
+
+    }
+
+
+    // GET: BodegaController/Details/5
+    public async Task<IActionResult> Details(int id)
+    {
+        var @object = await _serviceTarjeta.FindByIdAsync(id);
+
+        return PartialView(@object);
+    }
+
+    // GET: BodegaController/Edit/5
+    public async Task<IActionResult> Edit(int id)
+    {
+        var @object = await _serviceTarjeta.FindByIdAsync(id);
+
+        return View(@object);
+    }
+
+    // POST: BodegaController/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, TarjetaDTO dto)
+    {
+
+        await _serviceTarjeta.UpdateAsync(id, dto);
+
+        return RedirectToAction("Index");
+
+    }
+
+    // GET: BodegaController/Delete/5
+    public async Task<IActionResult> Delete(int id)
+    {
+        var @object = await _serviceTarjeta.FindByIdAsync(id);
+
+        return View(@object);
+
+    }
+
+    // POST: BodegaController/Delete/5
+    [HttpPost]
+    public async Task<IActionResult> DeleteConfirm(int id)
+    {
+        await _serviceTarjeta.DeleteAsync(id);
+
+        return RedirectToAction("Index");
+    }
+}

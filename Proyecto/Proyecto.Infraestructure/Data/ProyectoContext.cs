@@ -38,10 +38,7 @@ public partial class ProyectoContext : DbContext
 
             entity.ToTable("ActivoNFT");
 
-            entity.Property(e => e.IdNft)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.IdNft).ValueGeneratedNever();
             entity.Property(e => e.Autor)
                 .HasMaxLength(50)
                 .IsUnicode(false);
@@ -55,10 +52,7 @@ public partial class ProyectoContext : DbContext
         {
             entity.HasKey(e => e.IdCliente);
 
-            entity.Property(e => e.IdCliente)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
+            entity.Property(e => e.IdCliente).HasDefaultValueSql("(newid())");
             entity.Property(e => e.Apellido1)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -69,7 +63,7 @@ public partial class ProyectoContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
             entity.Property(e => e.IdPais)
-                .HasMaxLength(10)
+                .HasMaxLength(2)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.Nombre)
@@ -87,10 +81,6 @@ public partial class ProyectoContext : DbContext
             entity.HasKey(e => e.IdWallet);
 
             entity.Property(e => e.IdWallet).ValueGeneratedNever();
-            entity.Property(e => e.IdCliente)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.CriptoWallet)
                 .HasForeignKey(d => d.IdCliente)
@@ -102,10 +92,6 @@ public partial class ProyectoContext : DbContext
         {
             entity.HasKey(e => new { e.IdFactura, e.Secuencia });
 
-            entity.Property(e => e.IdNft)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
             entity.Property(e => e.Precio).HasColumnType("numeric(18, 2)");
 
             entity.HasOne(d => d.IdFacturaNavigation).WithMany(p => p.FacturaDetalle)
@@ -125,10 +111,6 @@ public partial class ProyectoContext : DbContext
 
             entity.Property(e => e.IdFactura).ValueGeneratedNever();
             entity.Property(e => e.FechaFacturacion).HasColumnType("datetime");
-            entity.Property(e => e.IdCliente)
-                .HasMaxLength(15)
-                .IsUnicode(false)
-                .IsFixedLength();
             entity.Property(e => e.TajetaNumero)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -149,7 +131,7 @@ public partial class ProyectoContext : DbContext
             entity.HasKey(e => e.IdPais);
 
             entity.Property(e => e.IdPais)
-                .HasMaxLength(10)
+                .HasMaxLength(2)
                 .IsUnicode(false)
                 .IsFixedLength();
             entity.Property(e => e.Descripcion)

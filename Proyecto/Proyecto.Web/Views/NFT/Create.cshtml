@@ -1,0 +1,136 @@
+﻿@model Proyecto.Application.DTOs.NFTDTO
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>NFTDTO</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-begin="onBegin"
+              data-ajax-failure="onFailure"
+              data-ajax-success="onSuccess"
+              data-ajax-complete="onComplete"
+              asp-antiforgery="true">
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor" class="control-label"></label>
+                <input asp-for="Autor" class="form-control" />
+                <span asp-validation-for="Autor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" />
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inventario" class="control-label"></label>
+                <input asp-for="Inventario" class="form-control" />
+                <span asp-validation-for="Inventario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagen" class="control-label"></label>
+                <input type="file" class="form-control" id="ImageFile" name="ImageFile" required />
+                <span asp-validation-for="Imagen" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br />
+<div id="message"></div>
+<br />
+
+<!-- Div para spinner -->
+<div id="loader" class=""></div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+
+@section scripts {
+
+    @* <script>
+        function onBegin() {
+            console.log("onBegin")
+            document.getElementById("loader").className = "loading";
+        }
+
+        function onFailure(response) {
+            console.log("onFailure")
+            console.log(response)
+            Swal.fire({
+                title: "Error!",
+                icon: "error",
+                text: response.responseText,
+                timer: 2000,
+                timerProgressBar: true
+            })
+        }
+
+        function onSuccess(response) {
+            console.log("onSuccess")
+        }
+
+        function onComplete() {
+            console.log("onComplete")
+            document.getElementById("loader").className = "xxxxx";
+
+            // Clear field
+            document.getElementById("IdProducto").value = "";
+            document.getElementById("DescripcionProducto").value = "";
+            document.getElementById("CostoDolar").value = "";
+            document.getElementById("Precio").value = "";
+            document.getElementById("Cantidad").value = "";
+            document.getElementById("ImageFile").value = "";
+
+
+
+        }
+    </script> *@
+
+    <script>
+        function onBegin() {
+            console.log("onBegin")
+            // Cuando se coloca loading en el nombre del class se inicia el spinner
+            // Este se define en el /css/site.css
+            document.getElementById("loader").className = "loading";
+        }
+
+        function onFailure(response) {
+            console.log()
+
+            document.getElementById("loader").className = "";
+        }
+
+        function onSuccess(response) {
+            console.log("onSuccess")
+            document.getElementById("message").innerHTML = "<div class='alert alert-primary' role='alert'>Registro salvado!</div>"
+        }
+
+        function onComplete() {
+            console.log("onComplete")
+            // Se cambia el nombre del class al loader. Con esto se detiene el spinner
+            document.getElementById("loader").className = "";
+        }
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -9,7 +9,7 @@ public partial class FacturaEncabezado
 
     public int IdTarjeta { get; set; }
 
-    public string IdCliente { get; set; } = null!;
+    public Guid IdCliente { get; set; }
 
     public DateTime FechaFacturacion { get; set; }
 

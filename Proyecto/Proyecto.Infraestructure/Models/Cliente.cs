@@ -5,7 +5,7 @@ namespace Proyecto.Infraestructure.Models;
 
 public partial class Cliente
 {
-    public string IdCliente { get; set; } = null!;
+    public Guid IdCliente { get; set; }
 
     public string Nombre { get; set; } = null!;
 

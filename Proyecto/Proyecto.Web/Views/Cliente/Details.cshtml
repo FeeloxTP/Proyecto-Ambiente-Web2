@@ -1,0 +1,62 @@
+﻿@model Proyecto.Application.DTOs.ClienteDTO
+
+@{
+    Layout = null;
+}
+
+<div class="container">
+    <dl class="row">
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IdCliente)
+        </dt>
+        <br />
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdCliente)
+        </dd>
+        <br />
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <br />
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <br />
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Apellido1)
+        </dt>
+        <br />
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Apellido1)
+        </dd>
+        <br />
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Apellido2)
+        </dt>
+        <br />
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Apellido2)
+        </dd>
+        <br />
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <br />
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <br />
+        <hr />
+        <dt class="col-sm-4">
+            @Html.DisplayNameFor(model => model.IdPais)
+        </dt>
+        <br />
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdPais)
+        </dd>
+    </dl>
+</div>

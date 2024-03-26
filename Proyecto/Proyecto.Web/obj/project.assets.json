@@ -8713,9 +8713,9 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "AutoMapper >= 13.0.1",
       "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter >= 8.0.3",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.2",
+      "Newtonsoft.Json >= 13.0.3",
       "Proyecto.Application >= 1.0.0",
       "Proyecto.Infraestructure >= 1.0.0",
       "Serilog.AspNetCore >= 8.0.1"
@@ -8767,10 +8767,6 @@
       "net8.0": {
         "targetAlias": "net8.0",
         "dependencies": {
-          "AutoMapper": {
-            "target": "Package",
-            "version": "[13.0.1, )"
-          },
           "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
             "target": "Package",
             "version": "[8.0.3, )"
@@ -8778,6 +8774,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[8.0.2, )"
+          },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.3, )"
           },
           "Serilog.AspNetCore": {
             "target": "Package",

@@ -5,7 +5,7 @@ namespace Proyecto.Infraestructure.Models;
 
 public partial class ActivoNft
 {
-    public string IdNft { get; set; } = null!;
+    public Guid IdNft { get; set; }
 
     public string Nombre { get; set; } = null!;
 

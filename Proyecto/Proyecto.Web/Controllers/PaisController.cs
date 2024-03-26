@@ -20,13 +20,13 @@ public class PaisController : Controller
         return View(collection);
     }
 
-    // GET: BodegaController/Create
+    // GET: PaisController/Create
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: BodegaController/Create
+    // POST: PaisController/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(PaisDTO dto)
@@ -49,8 +49,6 @@ public class PaisController : Controller
 
     }
 
-
-    // GET: BodegaController/Details/5
     public async Task<IActionResult> Details(string id)
     {
         var @object = await _servicePais.FindByIdAsync(id);
@@ -58,7 +56,7 @@ public class PaisController : Controller
         return PartialView(@object);
     }
 
-    // GET: BodegaController/Edit/5
+    // GET: PaisController/Edit/5
     public async Task<IActionResult> Edit(string id)
     {
         var @object = await _servicePais.FindByIdAsync(id);
@@ -66,7 +64,7 @@ public class PaisController : Controller
         return View(@object);
     }
 
-    // POST: BodegaController/Edit/5
+    // POST: PaisController/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(string id, PaisDTO dto)
@@ -78,7 +76,7 @@ public class PaisController : Controller
 
     }
 
-    // GET: BodegaController/Delete/5
+    // GET: PaisController/Delete/5
     public async Task<IActionResult> Delete(string id)
     {
         var @object = await _servicePais.FindByIdAsync(id);
@@ -87,7 +85,7 @@ public class PaisController : Controller
 
     }
 
-    // POST: BodegaController/Delete/5
+    // POST: PaisController/Delete/5
     [HttpPost]
     public async Task<IActionResult> DeleteConfirm(string id)
     {

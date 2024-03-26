@@ -9,7 +9,7 @@ public partial class FacturaDetalle
 
     public int Secuencia { get; set; }
 
-    public string IdNft { get; set; } = null!;
+    public Guid IdNft { get; set; }
 
     public int Cantidad { get; set; }
 

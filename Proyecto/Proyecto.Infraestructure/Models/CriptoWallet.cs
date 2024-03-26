@@ -7,7 +7,7 @@ public partial class CriptoWallet
 {
     public int IdWallet { get; set; }
 
-    public string IdCliente { get; set; } = null!;
+    public Guid IdCliente { get; set; }
 
     public int Disponibles { get; set; }
 

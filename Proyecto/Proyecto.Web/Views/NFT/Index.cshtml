@@ -1,0 +1,119 @@
+﻿@model IEnumerable<Proyecto.Application.DTOs.NFTDTO>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <a asp-action="Create" asp-controller="NFT" class="btn btn-primary">Crear <spam class="bi-plus-circle-fill"></spam></a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdNft)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Inventario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdNft)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Autor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Inventario)
+            </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Imagen)*@
+                    <!-- Show Image as Base64-->
+                    <input type="image" src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.Imagen)"
+                           id="ImagenProducto" style="height:75px;width:75px" class="zoom2">
+                </td>
+            <td>
+                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdNft }, new { @class = "btn btn-success    bi-eye-fill  " }) |
+                    <a data-ajax="true" class="btn btn-secondary  bi-info-circle"
+                       data-ajax-complete="onComplete"
+                       data-ajax-mode="replace"
+                       href='@Url.Action("Details", "Cliente", new { id  = item.IdNft })'>
+                        Detalles
+                    </a>
+                    |
+
+                    <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.IdNft', '@item.Nombre')">Eliminar</button>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+
+        function onComplete(data) {
+            Swal.fire({
+                title: 'Detalles ',
+                html: data.responseText,
+                showDenyButton: false,
+                showOkButton: false,
+                showCancelButton: false,
+            })
+        };
+
+        function deleteItem(id, name) {
+            Swal.fire({
+                title: '¿Eliminar NFT?',
+                html: '¿Estás seguro de que quieres eliminar al NFT <strong>' + name + '</strong>?<br>Esta acción no se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminarlo',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const myRequest = "/NFT/DeleteConfirm?id=" + id;
+                    fetch(myRequest, {
+                        method: 'POST',
+                    }).then((response) => response.text())
+                        .then((text) => {
+                            console.log(text);
+                            // Eliminar la fila correspondiente de la tabla
+                            document.getElementById('row_' + id).remove();
+                            Swal.fire('¡Eliminado!', '', 'success');
+                        });
+                }
+            });
+        }
+
+
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

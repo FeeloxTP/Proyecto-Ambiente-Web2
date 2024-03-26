@@ -26,12 +26,36 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Cliente/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Cliente/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Cliente/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Cliente/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/NFT/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkZUXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/NFT/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkZUXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Pais/Create.cshtml]

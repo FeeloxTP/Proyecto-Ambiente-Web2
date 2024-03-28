@@ -33,7 +33,7 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr id="row_@item.IdNft">
             <td>
                 @Html.DisplayFor(modelItem => item.IdNft)
             </td>

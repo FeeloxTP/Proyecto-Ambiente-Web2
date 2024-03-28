@@ -20,14 +20,12 @@ public class NFTDTO
     [Required(ErrorMessage = "{0} es requerido")]
     public string Autor { get; set; } = default!;
 
-    [Display(Name = "Precio")]
-    [Range(0, 999999999, ErrorMessage = "El valor mínimo es {0}")]
     [Required(ErrorMessage = "{0} es requerido")]
-    public decimal Precio { get; set; }
+    public decimal? Precio { get; set; }
 
     [Display(Name = "Inventario")]
     [Required(ErrorMessage = "{0} es requerido")]
-    public int Inventario { get; set; }
+    public int? Inventario { get; set; }
 
     [Display(Name = "Imagen")]
     [Required(ErrorMessage = "{0} es requerido")]

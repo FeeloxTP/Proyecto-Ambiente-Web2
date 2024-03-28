@@ -88,9 +88,22 @@ public class NFTController : Controller
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(Guid id, NFTDTO dto)
+     public async Task<IActionResult> Edit(Guid id, NFTDTO dto, IFormFile imageFile)
     {
+        MemoryStream target = new MemoryStream();
+
+        // Cuando es Insert Image viene en null porque se pasa diferente
+        if (dto.Imagen == null)
+        {
+            if (imageFile != null)
+            {
+                imageFile.OpenReadStream().CopyTo(target);
+
+                dto.Imagen = target.ToArray();
+                ModelState.Remove("Imagen");
+            }
+        }
+
         await _serviceNFT.UpdateAsync(id, dto);
         return RedirectToAction("Index");
 

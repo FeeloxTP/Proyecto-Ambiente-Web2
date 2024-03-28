@@ -31,7 +31,6 @@ public class PaisController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(PaisDTO dto)
     {
-
         if (!ModelState.IsValid)
         {
             // Lee del ModelState todos los errores que
@@ -41,7 +40,15 @@ public class PaisController : Controller
                                .Select(x => x.ErrorMessage));
             return BadRequest(errors);
         }
+        //validar si existe el pais con ese id
+        var existe = await _servicePais.FindByIdAsync(dto.IdPais);
 
+        if(existe != null)
+        {
+            //entra es porque exisste
+            return Json(new {success = false, IdPais = dto.IdPais});
+        }
+        //no estra al if se agrega normal 
         await _servicePais.AddAsync(dto);
 
 

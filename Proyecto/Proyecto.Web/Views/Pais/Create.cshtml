@@ -29,59 +29,62 @@
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+@if (ViewData["Mensaje"] != null)
+{
+    String mensaje = ViewData["Mensaje"] != null ? ViewData["Mensaje"]!.ToString()! : " ";
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        @mensaje
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<br />
+<div id="contenedor"></div>
+<div id="loader" class="xxxx"></div>
+<br />
 
 @section Scripts {
+    <script type="text/javascript">
 
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        <script type="text/javascript" >
+        document.getElementById("crear").addEventListener("submit", function (event) {
+            // Detener la propagación del evento
+            event.preventDefault();
+            event.stopPropagation();
 
-            document.getElementById("crear").addEventListener("submit", function (event) {
-                // Detener la propagación del evento
-                event.preventDefault();
-                event.stopPropagation();
-
-                // Verificar si el formulario es válido
-                if (event.target.checkValidity()) {
-                    // Mostrar el mensaje de confirmación
-                    Swal.fire({
-                        title: '¿Estás seguro?',
-                        text: '¿Deseas guardar este cliente en el sistema?',
-                        icon: 'question',
-                        showCancelButton: true,
-                        confirmButtonColor: '#3085d6',
-                        cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sí, guardar',
-                        cancelButtonText: 'Cancelar'
-                    }).then((result) => {
-                        // Si el usuario confirma, enviar el formulario
-                        if (result.isConfirmed) {
-                            onBegin();
-                            setTimeout(function () {
-                                document.getElementById('crear').submit();
-                            }, 1000); // Esperar 3 segundos antes de enviar el formulario
-                        }
-                    });
-                } else {
-                    console.log("Faltan datos por agregar");
-                    // Si el formulario no es válido, no hacer nada
-                }
-            });
-
-        // Función para manejar la respuesta JSON del controlador
-        function handleResponse(response) {
-            if (response.success === false) {
-                // El ID del país ya existe
-                var idPais = response.idPais;
-                swal("Error", "El ID del país " + idPais + " ya existe.", "error");
+            // Verificar si el formulario es válido
+            if (event.target.checkValidity()) {
+                // Mostrar el mensaje de confirmación
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¿Deseas crear este Pais?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, guardar cambios',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    // Si el usuario confirma, enviar el formulario
+                    if (result.isConfirmed) {
+                        onBegin();
+                        setTimeout(function () {
+                            document.getElementById('crear').submit();
+                        }, 1000); // Esperar 3 segundos antes de enviar el formulario
+                    }
+                });
             } else {
-                // Si el ID del país no existe, enviar el formulario
-                $('#formCrear').off('submit').submit();
+                console.log("Faltan datos por agregar");
+                // Si el formulario no es válido, no hacer nada
             }
+        });
+
+        function onBegin() {
+            console.log("onBegin")
+            document.getElementById("loader").className = "loading";
         }
+
     </script>
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

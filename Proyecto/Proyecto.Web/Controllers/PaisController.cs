@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
+using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 
 namespace Proyecto.Web.Controllers;
@@ -40,13 +41,12 @@ public class PaisController : Controller
                                .Select(x => x.ErrorMessage));
             return BadRequest(errors);
         }
-        //validar si existe el pais con ese id
-        var existe = await _servicePais.FindByIdAsync(dto.IdPais);
+        var paises = await _servicePais.FindByIdAsync(dto.IdPais);
 
-        if(existe != null)
+        if (paises != null)
         {
-            //entra es porque exisste
-            return Json(new {success = false, IdPais = dto.IdPais});
+            ViewData["Mensaje"] = "Ya se encuentra registrado este Pais!";
+            return View("Create");
         }
         //no estra al if se agrega normal 
         await _servicePais.AddAsync(dto);
@@ -76,6 +76,13 @@ public class PaisController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(string id, PaisDTO dto)
     {
+        var paises = await _servicePais.FindByDescriptionAsync(dto.Descripcion);
+
+        if (paises.Count() > 0)
+        {
+            ViewData["Mensaje"] = "Ya se encuentra registrado este Pais!";
+            return View("Edit");
+        }
 
         await _servicePais.UpdateAsync(id, dto);
 

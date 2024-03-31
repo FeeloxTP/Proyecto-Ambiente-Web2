@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
+using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 
 namespace Proyecto.Web.Controllers;
@@ -42,6 +43,14 @@ public class TarjetaController : Controller
             return BadRequest(errors);
         }
 
+        var Tarejetas = await _serviceTarjeta.FindByIdAsync(dto.IdTarjeta);
+
+        if (Tarejetas != null)
+        {
+            ViewData["Mensaje"] = "Ya se encuentra registrado esta Tarjeta!";
+            return View("Create");
+        }
+
         await _serviceTarjeta.AddAsync(dto);
 
 
@@ -71,6 +80,13 @@ public class TarjetaController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, TarjetaDTO dto)
     {
+        var tarjetas = await _serviceTarjeta.FindByDescriptionAsync(dto.DescripcionTarjeta);
+
+        if (tarjetas.Count() > 0)
+        {
+            ViewData["Mensaje"] = "Ya se encuentra registrado esta Tarjeta!";
+            return View("Edit");
+        }
 
         await _serviceTarjeta.UpdateAsync(id, dto);
 

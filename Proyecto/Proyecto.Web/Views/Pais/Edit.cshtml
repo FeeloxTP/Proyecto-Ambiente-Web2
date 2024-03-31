@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
 <hr />
 <div class="row">
@@ -14,7 +14,7 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="IdPais" class="control-label"></label>
-                <input asp-for="IdPais" class="form-control" />
+                <input asp-for="IdPais" class="form-control" readonly />
                 <span asp-validation-for="IdPais" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -24,7 +24,12 @@
             </div>
             <div class="form-group">
                 <br />
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-success" />
+
+                <a asp-action="Index" class="btn btn-primary">Regresar</a>
+            </div>
+            <div>
+                
             </div>
         </form>
     </div>
@@ -32,7 +37,15 @@
 
 <br />
 
-
+@if (ViewData["Mensaje"] != null)
+{
+    String mensaje = ViewData["Mensaje"] != null ? ViewData["Mensaje"]!.ToString()! : " ";
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        @mensaje
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 <br />
 <div id="contenedor"></div>

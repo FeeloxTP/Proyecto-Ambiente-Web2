@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Editar @Model.DescripcionTarjeta</h1>
+<h1>Editar</h1>
 
 <hr />
 <div class="row">
@@ -39,7 +39,15 @@
 
 
 <br />
-
+@if (ViewData["Mensaje"] != null)
+{
+    String mensaje = ViewData["Mensaje"] != null ? ViewData["Mensaje"]!.ToString()! : " ";
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <i class="bi bi-exclamation-triangle-fill"></i>
+        @mensaje
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
 
 
 <br />

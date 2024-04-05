@@ -1,0 +1,230 @@
+2024-03-31 06:55:37.112 -06:00 [INF] User profile is available. Using 'C:\Users\Ismael\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2024-03-31 06:55:37.614 -06:00 [INF] Now listening on: https://localhost:7084
+2024-03-31 06:55:37.616 -06:00 [INF] Now listening on: http://localhost:5267
+2024-03-31 06:55:37.619 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2024-03-31 06:55:37.621 -06:00 [INF] Hosting environment: Development
+2024-03-31 06:55:37.622 -06:00 [INF] Content root path: C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web
+2024-03-31 06:55:43.433 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/ - null null
+2024-03-31 06:55:43.535 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.HomeController.Index (Proyecto.Web)'
+2024-03-31 06:55:43.615 -06:00 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller Proyecto.Web.Controllers.HomeController (Proyecto.Web).
+2024-03-31 06:55:43.719 -06:00 [INF] Executing action method Proyecto.Web.Controllers.HomeController.Index (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:55:43.725 -06:00 [INF] Executed action method Proyecto.Web.Controllers.HomeController.Index (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.6212ms.
+2024-03-31 06:55:43.736 -06:00 [INF] Executing ViewResult, running view Index.
+2024-03-31 06:55:43.841 -06:00 [INF] Executed ViewResult - view Index executed in 107.4919ms.
+2024-03-31 06:55:43.855 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:55:43.868 -06:00 [INF] Executed action Proyecto.Web.Controllers.HomeController.Index (Proyecto.Web) in 249.328ms
+2024-03-31 06:55:43.871 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.HomeController.Index (Proyecto.Web)'
+2024-03-31 06:55:43.891 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 36.7647ms
+2024-03-31 06:55:43.894 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/ - 200 null text/html; charset=utf-8 473.9986ms
+2024-03-31 06:55:44.031 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:55:44.092 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:55:44.129 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 98.771ms
+2024-03-31 06:55:45.872 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT - null null
+2024-03-31 06:55:46.603 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:55:46.609 -06:00 [INF] Route matched with {action = "Index", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:55:46.829 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:55:47.771 -06:00 [INF] Executed DbCommand (29ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+2024-03-31 06:55:47.819 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 988.3864ms.
+2024-03-31 06:55:47.823 -06:00 [INF] Executing ViewResult, running view Index.
+2024-03-31 06:55:47.872 -06:00 [INF] Executed ViewResult - view Index executed in 49.5908ms.
+2024-03-31 06:55:47.873 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) in 1261.8447ms
+2024-03-31 06:55:47.875 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:55:47.885 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT - 200 null text/html; charset=utf-8 2013.1549ms
+2024-03-31 06:55:47.928 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:55:47.933 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:55:47.935 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 6.2933ms
+2024-03-31 06:55:48.232 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:55:48.233 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:55:48.236 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.8249ms
+2024-03-31 06:55:48.319 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 87.2077ms
+2024-03-31 06:55:49.841 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - null null
+2024-03-31 06:55:49.868 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:55:49.875 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:55:49.901 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:55:50.019 -06:00 [INF] Executed DbCommand (16ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:55:50.059 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 156.8307ms.
+2024-03-31 06:55:50.061 -06:00 [INF] Executing ViewResult, running view Edit.
+2024-03-31 06:55:50.111 -06:00 [INF] Executed ViewResult - view Edit executed in 50.9955ms.
+2024-03-31 06:55:50.112 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 234.7605ms
+2024-03-31 06:55:50.114 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:55:50.115 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 200 null text/html; charset=utf-8 273.9829ms
+2024-03-31 06:55:50.136 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:55:50.141 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:55:50.143 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 6.2696ms
+2024-03-31 06:55:50.452 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:55:50.452 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:55:50.461 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 9.4207ms
+2024-03-31 06:55:50.469 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.948ms
+2024-03-31 06:55:57.341 -06:00 [INF] Request starting HTTP/2 POST https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - multipart/form-data; boundary=----WebKitFormBoundaryfBvcevUxMJP1UVAm 67145
+2024-03-31 06:55:57.362 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:55:57.368 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid, Proyecto.Application.DTOs.NFTDTO, Microsoft.AspNetCore.Http.IFormFile) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:55:57.416 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Invalid"
+2024-03-31 06:55:57.436 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:55:57.508 -06:00 [INF] Executed DbCommand (4ms) [Parameters=[@p1='71c5e638-6deb-4328-8447-68233b8701d9', @p0='0xFFD8FFE000104A46494600010100000100010000FFDB00430003020203020203...' (Nullable = false) (Size = -1)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [ActivoNFT] SET [Imagen] = @p0
+OUTPUT 1
+WHERE [IdNft] = @p1;
+2024-03-31 06:55:57.519 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 101.38ms.
+2024-03-31 06:55:57.522 -06:00 [INF] Executing RedirectResult, redirecting to /NFT.
+2024-03-31 06:55:57.523 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 153.5545ms
+2024-03-31 06:55:57.524 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:55:57.526 -06:00 [INF] Request finished HTTP/2 POST https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 302 0 null 184.6987ms
+2024-03-31 06:55:57.527 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT - null null
+2024-03-31 06:55:57.546 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:55:57.547 -06:00 [INF] Route matched with {action = "Index", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:55:57.563 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:55:57.568 -06:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+2024-03-31 06:55:57.570 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 5.8189ms.
+2024-03-31 06:55:57.572 -06:00 [INF] Executing ViewResult, running view Index.
+2024-03-31 06:55:57.580 -06:00 [INF] Executed ViewResult - view Index executed in 8.3485ms.
+2024-03-31 06:55:57.581 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) in 32.706ms
+2024-03-31 06:55:57.582 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:55:57.584 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT - 200 null text/html; charset=utf-8 56.3597ms
+2024-03-31 06:55:57.587 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:55:57.587 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:55:57.596 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 10.0164ms
+2024-03-31 06:55:57.605 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.2412ms
+2024-03-31 06:55:57.612 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:55:57.618 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:55:57.619 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 6.9636ms
+2024-03-31 06:55:58.526 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - null null
+2024-03-31 06:55:58.545 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:55:58.546 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:55:58.562 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:55:58.566 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:55:58.569 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 5.4333ms.
+2024-03-31 06:55:58.570 -06:00 [INF] Executing ViewResult, running view Edit.
+2024-03-31 06:55:58.586 -06:00 [INF] Executed ViewResult - view Edit executed in 15.824ms.
+2024-03-31 06:55:58.587 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 39.241ms
+2024-03-31 06:55:58.588 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:55:58.589 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 200 null text/html; charset=utf-8 63.2125ms
+2024-03-31 06:55:58.610 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:55:58.615 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:55:58.616 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 6.0693ms
+2024-03-31 06:55:58.919 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:55:58.919 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:55:58.924 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 5.5715ms
+2024-03-31 06:55:58.931 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 11.9016ms
+2024-03-31 06:56:06.135 -06:00 [INF] Request starting HTTP/2 POST https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - multipart/form-data; boundary=----WebKitFormBoundaryJeMCJYgmZzXWquWh 67145
+2024-03-31 06:56:06.161 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:06.162 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid, Proyecto.Application.DTOs.NFTDTO, Microsoft.AspNetCore.Http.IFormFile) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:56:06.186 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Invalid"
+2024-03-31 06:56:06.189 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:56:06.216 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 29.2482ms.
+2024-03-31 06:56:06.217 -06:00 [INF] Executing RedirectResult, redirecting to /NFT.
+2024-03-31 06:56:06.219 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 54.701ms
+2024-03-31 06:56:06.219 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:06.221 -06:00 [INF] Request finished HTTP/2 POST https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 302 0 null 85.4641ms
+2024-03-31 06:56:06.222 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT - null null
+2024-03-31 06:56:06.240 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:56:06.241 -06:00 [INF] Route matched with {action = "Index", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:56:06.258 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:56:06.260 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+2024-03-31 06:56:06.262 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.758ms.
+2024-03-31 06:56:06.263 -06:00 [INF] Executing ViewResult, running view Index.
+2024-03-31 06:56:06.271 -06:00 [INF] Executed ViewResult - view Index executed in 7.6668ms.
+2024-03-31 06:56:06.272 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) in 29.7773ms
+2024-03-31 06:56:06.273 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:56:06.274 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT - 200 null text/html; charset=utf-8 51.6402ms
+2024-03-31 06:56:06.277 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:56:06.277 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:56:06.282 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 5.708ms
+2024-03-31 06:56:06.290 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.6772ms
+2024-03-31 06:56:06.299 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:56:06.303 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:56:06.304 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 5.1177ms
+2024-03-31 06:56:07.709 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - null null
+2024-03-31 06:56:07.729 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:07.731 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:56:07.748 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:56:07.751 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:56:07.754 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 4.7612ms.
+2024-03-31 06:56:07.755 -06:00 [INF] Executing ViewResult, running view Edit.
+2024-03-31 06:56:07.765 -06:00 [INF] Executed ViewResult - view Edit executed in 10.0599ms.
+2024-03-31 06:56:07.766 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 33.5073ms
+2024-03-31 06:56:07.767 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:07.767 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 200 null text/html; charset=utf-8 58.9052ms
+2024-03-31 06:56:07.787 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:56:07.791 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:56:07.792 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 5.0419ms
+2024-03-31 06:56:08.110 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:56:08.110 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:56:08.113 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.3286ms
+2024-03-31 06:56:08.123 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 13.6535ms
+2024-03-31 06:56:08.656 -06:00 [INF] Request starting HTTP/2 POST https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - multipart/form-data; boundary=----WebKitFormBoundaryP8n5nARVHZxTKxaj 965
+2024-03-31 06:56:08.673 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:08.674 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid, Proyecto.Application.DTOs.NFTDTO, Microsoft.AspNetCore.Http.IFormFile) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:56:08.693 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Invalid"
+2024-03-31 06:56:08.697 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:56:08.709 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.RedirectToActionResult in 14.7251ms.
+2024-03-31 06:56:08.711 -06:00 [INF] Executing RedirectResult, redirecting to /NFT.
+2024-03-31 06:56:08.712 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 36.1794ms
+2024-03-31 06:56:08.713 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:08.714 -06:00 [INF] Request finished HTTP/2 POST https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 302 0 null 57.6331ms
+2024-03-31 06:56:08.715 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT - null null
+2024-03-31 06:56:08.733 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:56:08.734 -06:00 [INF] Route matched with {action = "Index", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:56:08.748 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:56:08.752 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+2024-03-31 06:56:08.754 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 4.4281ms.
+2024-03-31 06:56:08.756 -06:00 [INF] Executing ViewResult, running view Index.
+2024-03-31 06:56:08.763 -06:00 [INF] Executed ViewResult - view Index executed in 7.1148ms.
+2024-03-31 06:56:08.764 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web) in 28.5324ms
+2024-03-31 06:56:08.765 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Index (Proyecto.Web)'
+2024-03-31 06:56:08.766 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT - 200 null text/html; charset=utf-8 50.4977ms
+2024-03-31 06:56:08.768 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:56:08.768 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:56:08.771 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 2.7826ms
+2024-03-31 06:56:08.785 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.6492ms
+2024-03-31 06:56:08.790 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:56:08.794 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:56:08.796 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 6.0098ms
+2024-03-31 06:56:09.865 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - null null
+2024-03-31 06:56:09.886 -06:00 [INF] Executing endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:09.887 -06:00 [INF] Route matched with {action = "Edit", controller = "NFT"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Edit(System.Guid) on controller Proyecto.Web.Controllers.NFTController (Proyecto.Web).
+2024-03-31 06:56:09.907 -06:00 [INF] Executing action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) - Validation state: "Valid"
+2024-03-31 06:56:09.910 -06:00 [INF] Executed DbCommand (1ms) [Parameters=[@__get_Item_0='71c5e638-6deb-4328-8447-68233b8701d9' (Nullable = true)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[IdNft], [a].[Autor], [a].[Imagen], [a].[Inventario], [a].[Nombre], [a].[Precio]
+FROM [ActivoNFT] AS [a]
+WHERE [a].[IdNft] = @__get_Item_0
+2024-03-31 06:56:09.913 -06:00 [INF] Executed action method Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web), returned result Microsoft.AspNetCore.Mvc.ViewResult in 4.8662ms.
+2024-03-31 06:56:09.914 -06:00 [INF] Executing ViewResult, running view Edit.
+2024-03-31 06:56:09.925 -06:00 [INF] Executed ViewResult - view Edit executed in 10.6213ms.
+2024-03-31 06:56:09.926 -06:00 [INF] Executed action Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web) in 37.4916ms
+2024-03-31 06:56:09.927 -06:00 [INF] Executed endpoint 'Proyecto.Web.Controllers.NFTController.Edit (Proyecto.Web)'
+2024-03-31 06:56:09.928 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/NFT/Edit/71c5e638-6deb-4328-8447-68233b8701d9 - 200 null text/html; charset=utf-8 63.2417ms
+2024-03-31 06:56:09.945 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+2024-03-31 06:56:09.950 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2024-03-31 06:56:09.951 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7084/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 6.4201ms
+2024-03-31 06:56:10.250 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - null null
+2024-03-31 06:56:10.250 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7084/_vs/browserLink - null null
+2024-03-31 06:56:10.253 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_framework/aspnetcore-browser-refresh.js - 200 13760 application/javascript; charset=utf-8 3.106ms
+2024-03-31 06:56:10.267 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7084/_vs/browserLink - 200 null text/javascript; charset=UTF-8 17.1966ms

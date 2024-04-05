@@ -20,7 +20,7 @@ public class NFTController : Controller
         return View(collection);
     }
 
-    public async Task<IActionResult> Create()
+    public IActionResult Create()
     {
         return View();
     }
@@ -88,24 +88,26 @@ public class NFTController : Controller
     }
 
     [HttpPost]
-     public async Task<IActionResult> Edit(Guid id, NFTDTO dto, IFormFile imageFile)
+    public async Task<IActionResult> Edit(Guid id, NFTDTO dto, IFormFile imageFile)
     {
-        MemoryStream target = new MemoryStream();
-
-        // Cuando es Insert Image viene en null porque se pasa diferente
-        if (dto.Imagen == null)
+        // Verificar si se ha seleccionado un nuevo archivo de imagen
+        if (imageFile != null && imageFile.Length > 0)
         {
-            if (imageFile != null)
+            // Si se ha seleccionado un archivo de imagen, actualizar la imagen en el DTO
+            using (var memoryStream = new MemoryStream())
             {
-                imageFile.OpenReadStream().CopyTo(target);
-
-                dto.Imagen = target.ToArray();
-                ModelState.Remove("Imagen");
+                await imageFile.CopyToAsync(memoryStream);
+                dto.Imagen = memoryStream.ToArray();
             }
         }
+        else
+        {
+            NFTDTO nft = await _serviceNFT.FindByIdAsync(id);
+            dto.Imagen = nft.Imagen;
+        }
 
+        // Realizar la actualización del NFT con los datos proporcionados
         await _serviceNFT.UpdateAsync(id, dto);
         return RedirectToAction("Index");
-
     }
 }

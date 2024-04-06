@@ -21,7 +21,7 @@ public class NFTDTO
     public string Autor { get; set; } = default!;
 
     [Required(ErrorMessage = "{0} es requerido")]
-    public decimal? Precio { get; set; }
+    public decimal Precio { get; set; }
 
     [Display(Name = "Inventario")]
     [Required(ErrorMessage = "{0} es requerido")]

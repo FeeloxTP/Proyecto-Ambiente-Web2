@@ -6,6 +6,7 @@ using Microsoft.Identity.Client;
 using Proyecto.Application.Services.Interfaces;
 using Proyecto.Infraestructure.Models;
 using Proyecto.Infraestructure.Repository.Interfaces;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ public class ServiceFactura : IServiceFactura
         var @object = _mapper.Map<FacturaEncabezado>(dto);
         var cliente = await _repositoryCliente.FindByIdAsync(dto.IdCliente);
         // Send email
-        await SendEmail(cliente!.Email!);
+        //await SendEmail(cliente!.Email!);
         return await _repositoryFactura.AddAsync(@object);
     }
     public async Task<int> GetNextReceiptNumber()
@@ -94,7 +95,7 @@ public class ServiceFactura : IServiceFactura
                 new MailAddress(email))
         {
             Subject = "Factura Electrónica para " + email,
-            Body = "Adjunto Factura Electronica de Electronics",
+            Body = "Adjunto Factura Electronica de NFT",
             IsBodyHtml = true
         };
         //Attachment attachment = new Attachment(@"c:\\temp\\factura.pdf");
@@ -120,7 +121,7 @@ public class ServiceFactura : IServiceFactura
         QuestPDF.Settings.License = LicenseType.Community;
 
         // return ByteArrays
-        var pdfByteArray = Document.Create(document =>
+        var pdfByteArray = QuestPDF.Fluent.Document.Create(document =>
         {
             document.Page(page =>
             {
@@ -134,7 +135,7 @@ public class ServiceFactura : IServiceFactura
                 {
                     row.RelativeItem().Column(col =>
                     {
-                        col.Item().AlignLeft().Text("Electronics S.A. ").Bold().FontSize(14).Bold();
+                        col.Item().AlignLeft().Text("NFT S.A. ").Bold().FontSize(14).Bold();
                         col.Item().AlignLeft().Text($"Fecha: {DateTime.Now} ").FontSize(9);
                         col.Item().LineHorizontal(1f);
                     });
@@ -144,7 +145,7 @@ public class ServiceFactura : IServiceFactura
 
                 page.Content().PaddingVertical(10).Column(col1 =>
                 {
-                    col1.Item().AlignCenter().Text("Reporte de Productos").FontSize(14).Bold();
+                    col1.Item().AlignCenter().Text("Reporte de NFT").FontSize(14).Bold();
                     col1.Item().Text("");
                     col1.Item().LineHorizontal(0.5f);
 
@@ -181,11 +182,11 @@ public class ServiceFactura : IServiceFactura
                         foreach (var item in collection)
                         {
 
-                            var total = item.Cantidad * item.Precio;
+                            var total = item.Inventario * item.Precio;
 
                             // Column 1
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                            .Padding(2).Text(item.IdProducto.ToString() + "-" + item.DescripcionProducto.PadRight(50, '.').Substring(0, 15)).FontSize(10);
+                            .Padding(2).Text(item.IdNft.ToString() + "-" + item.Nombre.PadRight(50, '.').Substring(0, 15)).FontSize(10);
 
                             // Column 2
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
@@ -193,7 +194,7 @@ public class ServiceFactura : IServiceFactura
 
                             // Column 3
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                                                .Padding(2).AlignRight().Text(item.Cantidad.ToString()).FontSize(10);
+                                                .Padding(2).AlignRight().Text(item.Inventario.ToString()).FontSize(10);
                             // Column 4
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
                                                    .Padding(2).AlignRight().Text(item.Precio.ToString("###,###.00")).FontSize(10);
@@ -204,7 +205,7 @@ public class ServiceFactura : IServiceFactura
 
                     });
 
-                    var granTotal = collection.Sum(p => p.Cantidad * p.Precio);
+                    var granTotal = collection.Sum(p => p.Inventario * p.Precio);
 
                     col1.Item().AlignRight().Text("Total " + granTotal.ToString("###,###.00")).FontSize(12).Bold();
 

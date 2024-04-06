@@ -42,12 +42,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/_DetailFactura.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxfRGV0YWlsRmFjdHVyYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Login/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/NFT/Create.cshtml]
@@ -104,6 +116,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Tarjeta/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGFyamV0YVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Usuario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Usuario/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/_ViewImports.cshtml]

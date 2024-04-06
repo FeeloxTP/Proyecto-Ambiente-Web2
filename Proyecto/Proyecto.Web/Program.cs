@@ -12,8 +12,13 @@ using Microsoft.Identity.Client;
 using Serilog.Events;
 using Serilog;
 using Proyecto.Web.Middleware;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
+using Proyecto.Application.Config;
 
 var builder = WebApplication.CreateBuilder(args);
+// Mapping AppConfig Class to read  appsettings.json
+builder.Services.Configure<AppConfig>(builder.Configuration);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -31,6 +36,34 @@ builder.Services.AddTransient<IServiceCliente, ServiceCliente>();
 builder.Services.AddTransient<IRepositoryNFT, RepositoryNFT>();
 builder.Services.AddTransient<IServiceNFT, ServiceNFT>();
 
+builder.Services.AddTransient<IRepositoryFactura, RepositoryFactura>();
+builder.Services.AddTransient<IServiceFactura, ServiceFactura>();
+
+builder.Services.AddTransient<IRepositoryUsuario, RepositoryUsuario>();
+builder.Services.AddTransient<IServiceUsuario, ServiceUsuario>();
+
+builder.Services.AddTransient<IRepositoryPerfil, RepositoryPerfil>();
+builder.Services.AddTransient<IServicePerfil, ServicePerfil>();
+
+//// Security
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(20);
+    });
+
+builder.Services.AddControllersWithViews(options =>
+{
+    options.Filters.Add(
+            new ResponseCacheAttribute
+            {
+                NoStore = true,
+                Location = ResponseCacheLocation.None,
+            }
+        );
+});
+
 // config Automapper
 builder.Services.AddAutoMapper(config =>
 {
@@ -38,7 +71,9 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile<TarjetaProfile>();
     config.AddProfile<ClienteProfile>();
     config.AddProfile<NFTProfile>();
-
+    config.AddProfile<FacturaProfile>();
+    config.AddProfile<UsuarioProfile>();
+    config.AddProfile<PerfilProfile>();
 });
 
 // Config Connection to SQLServer DataBase
@@ -98,6 +133,6 @@ app.UseAntiforgery();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Login}/{action=Index}/{id?}");
 
 app.Run();

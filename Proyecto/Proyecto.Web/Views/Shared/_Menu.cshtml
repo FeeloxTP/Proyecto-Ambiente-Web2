@@ -1,57 +1,64 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  bg-black border-bottom box-shadow mb-3">
+﻿<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index">NFT</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <!--bg-light backgroud icon -->
-            <span class="navbar-toggler-icon bg-light"></span>
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">NFT [@User.Identity!.Name]</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="navbar-collapse collapse   d-sm-inline-flex justify-content-between">
-            <ul class="navbar-nav flex-grow-1">
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Mantenimientos
-                    </a>
-                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Pais")">Pais</a></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Cliente" )">Cliente</a></li>
-                        <li><hr class="dropdown-divider text-light"></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","NFT")">NFT</a></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index","Tarjeta")">Tarjeta</a></li>
-
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Procesos
-                    </a>
-                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index", "Venta")">Facturacion</a></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index", "Cierre" )">Anular Factura</a></li>
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Reportes
-                    </a>
-                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-light" href="@Url.Action("ReporteVentas", "Reporte" )">Ventas </a></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("ReporteInventario", "Reporte")">Inventario</a></li>
-                        <li><hr class="dropdown-divider text-light"></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("ReporteGrafico", "Reporte")">Graficos </a></li>
-                        <li><a class="dropdown-item text-light" href="@Url.Action("", "Reporte")">Otros</a></li>
-
-                    </ul>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Seguridad
-                    </a>
-                    <ul class="dropdown-menu bg-black text-light" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item text-light" href="@Url.Action("Index", "Usuario")">Nuevo Usuario</a></li>
-
-                    </ul>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                @if (User.IsInRole("Admin") || User.IsInRole("Procesos"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="mantenimientosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Mantenimientos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="mantenimientosDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("Index","Pais")">Pais</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Index","Cliente" )">Cliente</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Index","NFT")">NFT</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Index","Tarjeta")">Tarjeta</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="procesosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Procesos
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="procesosDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "Factura")">Facturación</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "Factura" )">Anular Factura</a></li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("Admin") || User.IsInRole("Reportes"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="reportesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Reportes
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="reportesDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("ReporteVentas", "Reporte" )">Ventas </a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("ReporteInventario", "Reporte")">Inventario</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="@Url.Action("ReporteGrafico", "Reporte")">Graficos </a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("", "Reporte")">Otros</a></li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="seguridadDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Seguridad
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="seguridadDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "Usuario")">Usuario</a></li>
+                        </ul>
+                    </li>
+                }
+                <li class="nav-item">
+                    <a class="nav-link" asp-area="" asp-controller="Login" asp-action="LogOff">Salir</a>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,4 @@
+@Proyecto.API_HostAddress = http://localhost:5069
+
+GET {{Proyecto.API_HostAddress}}/api/Nft/Nft
+Accept: application/json

@@ -1,0 +1,396 @@
+﻿@model Proyecto.Application.DTOs.FacturaDTO
+
+@{
+    ViewData["Title"] = "Factura";
+}
+<div class="card">
+    <div class="card-header">Factura</div>
+    <div class="card-body">
+
+        <form asp-action="Create" asp-controller="Factura2" id="myForm"
+              data-ajax="true"
+              data-ajax-method="POST"
+              data-ajax-begin="onBegin"
+              data-ajax-failure="onFailure"
+              data-ajax-success="onSuccess"
+              data-ajax-complete="onComplete">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="d-flex gap-2  ">
+                <div class=" ">
+                    <label asp-for="IdFactura" class="control-label fw-normal"></label>
+                    <input asp-for="IdFactura" class="form-control form-control-sm" value="@ViewBag.CurrentReceipt" readonly />
+                    <span asp-validation-for="IdFactura" class="text-danger"></span>
+                </div>
+                <div class=" ">
+                    <label asp-for="IdCliente" class="control-label"></label>
+                    <input asp-for="IdCliente" type="text" class="form-control" />
+                    <span asp-validation-for="IdCliente" class="text-danger"></span>
+                    <label id="NombreCliente" class="control-label fw-bold">-</label>
+                </div>
+                <div class=" ">
+                    <label asp-for="IdTarjeta" class="control-label"></label>
+                    @Html.DropDownListFor(m => m.IdTarjeta,
+                             new SelectList(ViewBag.ListTarjeta, "IdTarjeta", "DescripcionTarjeta"), new { @class = "form-select form-select " })
+                    <span asp-validation-for="IdTarjeta" class="text-danger"></span>
+                </div>
+
+                <div class="  ">
+                    <label asp-for="TarjetaNumero" class="control-label"></label>
+                    <input asp-for="TarjetaNumero" class="form-control" />
+                    <span asp-validation-for="TarjetaNumero" class="text-danger"></span>
+                </div>
+                <div class="  ">
+                    <label></label>
+                    <input type="submit" value="Salvar" class="form-control btn btn-success" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<div class="card">
+    <div class="card-header">Detalle</div>
+    <div class="card-body">
+        <div class="d-flex gap-3">
+            <div>
+                <label>Código Producto</label>
+                <input type="text" id="IdProducto" class="form-control" />
+                <label id="ProductoNombre" class="control-label fw-bold">-</label>
+            </div>
+            <div>
+                <!-- <label >Cantidad Inventario</label>-->
+                <input type="hidden" readonly id="CantidadEnInventario" class="form-control" />
+            </div>
+            <div>
+                <label>Cantidad</label>
+                <input type="number" id="Cantidad" class="form-control" />
+            </div>
+            <div>
+                <label>Precio</label>
+                <input type="number" id="Precio" readonly class="form-control" />
+            </div>
+            <div>
+                <label></label>
+                <button class="btn btn-primary form-control" onclick="addProduct()">Agregar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="divDetalleFactura" class="px-3"></div>
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+        ///////////////////////////////////////////////////////////////////
+        // Autocomplete ProductoId search by Product Name
+        ///////////////////////////////////////////////////////////////////
+        $("#IdProducto").autocomplete({
+            source: function (request, response) {
+                var id = $("#IdProducto").val();
+                //debugger;
+
+                // default IMAGE NO-IMAGE
+                // $("#ImgProducto").attr("src", "/Images/nophoto.jpg");
+                // Clear Product Name
+                $("#ProductoNombre").html("")
+                $("#Precio").val("");
+                $("#Cantidad").val("");
+                $("#CantidadEnInventario").val("");
+                $.ajax({
+                    type: "GET",
+                    url: "/NFT/GetProductoByName",
+                    dataType: "json",
+                    data: { filtro: id },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+
+                            //debugger;
+                            return { label: item.descripcionProducto, value: item.idProducto, data: item };
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        // xhr.requestText
+                        // debugger;
+                        console.log(error)
+                        alert("Error: " + error + ", No Error: " + xhr.status);
+                    },
+                });
+            },
+            select: function (event, ui) {
+
+                // Show data
+                $("#IdProducto").val(ui.item.value)
+                $("#ProductoNombre").html(ui.item.label + " - Inventario:" + ui.item.data.cantidad)
+                $("#Precio").val(ui.item.data.precio)
+                $("#IdProducto").focus();
+                // Show the image, it isn't necesary to convert to Base64 since it comes from Json
+                //$("#ImgProducto").attr("src", "data:image/jpeg;charset=utf-8;base64," + ui.item.data.imagen);
+                $("#CantidadEnInventario").val(ui.item.data.cantidad);
+
+                return false;
+            }
+        });
+    </script>
+
+
+
+    <script>
+
+        ////////////////////////////////////////////////////
+        // Busca el cliente por nombre+apellido1+apellido2 //
+        /////////////////////////////////////////////////////
+
+        $("#IdCliente").autocomplete({
+            source: function (request, response) {
+                var idCliente = $("#IdCliente").val();
+                //debugger;
+                console.log(idCliente);
+                $.ajax({
+                    type: "GET",
+                    url: "/Cliente/GetClienteByName",
+                    dataType: "json",
+                    data: { filtro: idCliente },
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            console.log(item);
+                            //debugger;
+                            return { label: item.nombre + " " + item.apellido1 + " " + item.apellido2, value: item.idCliente };
+                        }));
+                    },
+                    error: function (xhr, status, error) {
+                        // xhr.requestText
+                        // debugger;
+                        console.log(error)
+                        alert("Error: " + error + ", No Error: " + xhr.status);
+                    },
+                });
+            },
+            select: function (event, ui) {
+
+                $("#IdCliente").val(ui.item.value);
+                $("#NombreCliente").html(ui.item.label)
+
+                return false;
+            }
+        });
+    </script>
+
+
+    <script>
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // Clear IdCliente and NombreCliente when they got the focus                                 //
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        $("#IdCliente").focus(function () {
+            // Limpia la caja de texto
+            $("#IdCliente").val("");
+            $("#NombreCliente").html("*")
+        });
+    </script>
+
+
+    <script>
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // Add cardshoping Product
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        function addProduct() {
+            let idProduct = document.getElementById("IdProducto").value;
+            let cantidad = document.getElementById("Cantidad").value;
+            let precio = document.getElementById("Precio").value;
+            let divDetalleFactura = document.getElementById("divDetalleFactura");
+
+            let cantidadEnInventario = document.getElementById("CantidadEnInventario").value;
+
+
+
+            // Validation
+            if ($.isNumeric(idProduct) == false) {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Ingrese el código del NFT!",
+                    icon: "error"
+                });
+
+                return;
+            }
+            // Validation
+            if ($.isNumeric(cantidad) == false) {
+                Swal.fire({
+                    title: "Error!",
+                    text: "Ingrese la cantidad del Producto!",
+                    icon: "error"
+                });
+
+                return;
+            }
+
+
+            // Validation
+            if (parseInt(cantidad) <= 0) {
+                Swal.fire({
+                    title: "Error!",
+                    text: "La cantidad debe ser mayor a CERO!",
+                    icon: "error"
+                });
+                return;
+            }
+
+            // Validate stock?
+            if (parseInt(cantidad) > parseInt(cantidadEnInventario)) {
+
+                Swal.fire({
+                    title: "Error!",
+                    text: "La cantidad de inventario insuficiente! ",
+                    icon: "error"
+                });
+                return;
+            }
+
+            const myRequest = "/Factura/AddProduct?id=" + idProduct + "&cantidad=" + cantidad
+
+            const options = {
+                method: 'GET'
+            }
+
+            fetch(myRequest, options)
+                .then(function (response) {
+                    // Error?
+                    if (!response.ok) {
+                        // console.log(response)
+                        // Get error from promise and throw a Error Object
+                        return response.text().then(text => { throw new Error(text) })
+                    }
+                    // everthing goes well!
+                    return response.text();
+                })
+                .then((text) => {
+                    //console.log(results)
+                    divDetalleFactura.innerHTML = text
+                }).catch(error => {
+                    // show error
+                    Swal.fire({
+                        title: "Error",
+                        text: error,
+                        icon: "error"
+                    })
+                })
+
+
+            //detallefacturaBorrar.remove()
+            // Clear fields
+            $("#IdProducto").val("");
+            $("#Precio").val("");
+            $("#ProductoNombre").html("");
+            $("#Cantidad").val("");
+            $("#CantidadEnInventario").val("");
+
+            // Clear image... NoPhoto
+            //$("#ImgProducto").attr("src", "/Images/nophoto.jpg");
+
+        }
+
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        // Delete item from Cardshop
+        ///////////////////////////////////////////////////////////////////////////////////////////////
+        function deleteProduct(secuence) {
+            console.log("Borrar " + secuence)
+            const divDetalleFactura = document.getElementById("divDetalleFactura");
+            const myRequest = "/Factura/DeleteProduct?id=" + secuence
+            const options = {
+                method: 'GET'
+            }
+            fetch(myRequest, options)
+                .then(function (response) {
+                    // Error?
+                    if (!response.ok) {
+                        // console.log(response)
+                        // Extraer error from promise and throw a Error Object
+                        return response.text().then(text => { throw new Error(text) })
+                    }
+                    // everthing goes well!
+                    return response.text();
+                })
+                .then((text) => {
+                    divDetalleFactura.innerHTML = text
+
+                }).catch(error => {
+
+                    // show error
+                    Swal.fire({
+                        title: "Error",
+                        text: error,
+                        icon: "error"
+                    })
+
+                })
+        }
+
+    </script>
+
+
+
+    <!------------------------------------------------------------------------------------------------->
+    <!--Ajax control -->
+    <script>
+        function onBegin() {
+            console.log("onBegin")
+        }
+
+        function onFailure(response) {
+            console.log("onFailure")
+            Swal.fire({
+                title: "Error!",
+                text: response.responseText,
+                icon: "error"
+            });
+        }
+
+        function onSuccess(response) {
+            console.log("onSuccess")
+            // Reset form (clear all fields)
+            document.getElementById("myForm").reset();
+            // Clear
+            document.getElementById("NombreCliente").innerHTML = ""
+            // Delete table
+            document.getElementById("divDetalleFactura").innerHTML = ""
+
+            Swal.fire({
+                icon: "success",
+                title: "Factura salvada ...",
+                showConfirmButton: false,
+                timer: 1500
+            });
+
+            // Refresh the page
+            location.reload();
+
+        }
+
+        function onComplete() {
+            console.log("Fin del proceso")
+        }
+    </script>
+
+
+
+    <!-- Otros-->
+    <script>
+        function onClearForm() {
+
+            // Reset form (clear all fields)
+            document.getElementById("myForm").reset();
+            // Clear
+            document.getElementById("NombreCliente").innerHTML = ""
+            // Delete table
+            document.getElementById("detalleFacturaView").innerHTML = ""
+
+        }
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

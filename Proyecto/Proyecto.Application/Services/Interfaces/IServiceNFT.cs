@@ -9,6 +9,7 @@ namespace Proyecto.Application.Services.Interfaces;
 
 public interface IServiceNFT
 {
+    Task<ICollection<NFTDTO>> FindByNameAsync(string description);
     Task<ICollection<NFTDTO>> FindByDescriptionAsync(string description);
     Task<ICollection<NFTDTO>> ListAsync();
     Task<NFTDTO> FindByIdAsync(Guid id);

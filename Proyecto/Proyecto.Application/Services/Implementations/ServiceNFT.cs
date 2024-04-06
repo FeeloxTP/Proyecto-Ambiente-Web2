@@ -21,6 +21,13 @@ public class ServiceNFT : IServiceNFT
         _repository = repository;
         _mapper = mapper;
     }
+    public async Task<ICollection<NFTDTO>> FindByNameAsync(string name)
+    {
+        var list = await _repository.FindByNameAsync(name);
+        var collection = _mapper.Map<ICollection<NFTDTO>>(list);
+        return collection;
+    }
+
 
     public async Task<Guid> AddAsync(NFTDTO dto)
     {

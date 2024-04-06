@@ -16,7 +16,7 @@ public class FacturaProfile : Profile
         CreateMap<FacturaDTO, FacturaEncabezado>().ReverseMap();
         CreateMap<FacturaDetalleDTO, FacturaDetalle>().ReverseMap();
 
-        CreateMap<FacturaEncabezadoDTO, FacturaEncabezado>()
+        CreateMap<FacturaDTO, FacturaEncabezado>()
              .ForMember(dest => dest.IdFactura, orig => orig.MapFrom(x => x.IdFactura))
              .ForMember(dest => dest.IdTarjeta, orig => orig.MapFrom(x => x.IdTarjeta))
              .ForMember(dest => dest.IdCliente, orig => orig.MapFrom(x => x.IdCliente))

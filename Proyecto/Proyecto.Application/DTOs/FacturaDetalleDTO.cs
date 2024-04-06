@@ -13,6 +13,8 @@ public record FacturaDetalleDTO
     [Display(Name = "No")]
     public int Secuencia { get; set; }
     [Display(Name = "Código")]
+    public string DescripcionProducto { get; set; } = default!;
+
     public Guid IdNFT { get; set; }
     [Display(Name = "Cantidad")]
     public int Cantidad { get; set; }
@@ -24,6 +26,6 @@ public record FacturaDetalleDTO
     //public decimal Impuesto { get; set; }
     //[DisplayFormat(DataFormatString = "{0:n2}")]
     //[Display(Name = "Total")]
-    //public decimal TotalLinea { get; set; } 
+    public decimal TotalLinea { get; set; } 
 
 }

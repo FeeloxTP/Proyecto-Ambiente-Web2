@@ -18,7 +18,14 @@ public class RepositoryNFT : IRepositoryNFT
     {
         _context = context;
     }
-
+    public async Task<ICollection<ActivoNft>> FindByNameAsync(string name)
+    {
+        var collection = await _context
+                                    .Set<ActivoNft>()
+                                    .Where(p => p.Nombre.Contains(name))
+                                    .ToListAsync();
+        return collection;
+    }
     public async Task<Guid> AddAsync(ActivoNft entity)
     {
         await _context.Set<ActivoNft>().AddAsync(entity);

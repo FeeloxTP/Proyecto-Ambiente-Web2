@@ -34,6 +34,8 @@ public class RepositoryFactura : IRepositoryFactura
             await _context.Database.BeginTransactionAsync();
             await _context.Set<FacturaEncabezado>().AddAsync(entity);
 
+            entity.FechaFacturacion = DateTime.Now;
+
             // Withdraw from inventory
             foreach (var item in entity.FacturaDetalle)
             {

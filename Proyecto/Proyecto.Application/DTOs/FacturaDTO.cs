@@ -24,7 +24,7 @@ public class FacturaDTO
 
     [Required(ErrorMessage = "{0} es requerido")]
     [Display(Name = "No Tarjeta")]
-    public string TarjetaNumero { get; set; } = null!;
+    public string TajetaNumero { get; set; } = null!;
 
 
     public List<FacturaDetalleDTO> ListFacturaDetalle = null!;

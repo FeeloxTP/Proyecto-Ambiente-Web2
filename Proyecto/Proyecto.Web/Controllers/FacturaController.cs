@@ -155,6 +155,11 @@ public class FacturaController : Controller
 
             var lista = JsonSerializer.Deserialize<List<FacturaDetalleDTO>>(json!)!;
 
+            if(lista.Count == 0 || lista == null)
+            {
+                return BadRequest("No hay datos por facturar");
+            }
+
             //Mismo numero de factura para el detalle FK
             lista.ForEach(p => p.IdFactura = facturaEncabezadoDTO.IdFactura);
             facturaEncabezadoDTO.ListFacturaDetalle = lista;

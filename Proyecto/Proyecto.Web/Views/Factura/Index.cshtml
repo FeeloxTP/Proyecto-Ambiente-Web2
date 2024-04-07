@@ -7,7 +7,7 @@
     <div class="card-header">Factura</div>
     <div class="card-body">
 
-        <form asp-action="Create" asp-controller="Factura2" id="myForm"
+        <form asp-action="Create" asp-controller="Factura" id="myForm"
               data-ajax="true"
               data-ajax-method="POST"
               data-ajax-begin="onBegin"
@@ -35,9 +35,9 @@
                 </div>
 
                 <div class="  ">
-                    <label asp-for="TarjetaNumero" class="control-label"></label>
-                    <input asp-for="TarjetaNumero" class="form-control" />
-                    <span asp-validation-for="TarjetaNumero" class="text-danger"></span>
+                    <label asp-for="TajetaNumero" class="control-label"></label>
+                    <input asp-for="TajetaNumero" class="form-control" />
+                    <span asp-validation-for="TajetaNumero" class="text-danger"></span>
                 </div>
                 <div class="  ">
                     <label></label>
@@ -48,14 +48,15 @@
     </div>
 </div>
 <br />
+<!--Inicio del detalle-->
 <div class="card">
     <div class="card-header">Detalle</div>
     <div class="card-body">
         <div class="d-flex gap-3">
             <div>
                 <label>Código Producto</label>
-                <input type="text" id="IdProducto" class="form-control" />
-                <label id="ProductoNombre" class="control-label fw-bold">-</label>
+                <input type="text" id="IdNft" class="form-control" />
+                <label id="NFTNombre" class="control-label fw-bold">-</label>
             </div>
             <div>
                 <!-- <label >Cantidad Inventario</label>-->
@@ -85,17 +86,17 @@
 
     <script>
         ///////////////////////////////////////////////////////////////////
-        // Autocomplete ProductoId search by Product Name
+        // Autocomplete Modal NftId search by Product Name
         ///////////////////////////////////////////////////////////////////
-        $("#IdProducto").autocomplete({
+        $("#IdNft").autocomplete({
             source: function (request, response) {
-                var id = $("#IdProducto").val();
+                var id = $("#IdNft").val();
                 //debugger;
 
                 // default IMAGE NO-IMAGE
-                // $("#ImgProducto").attr("src", "/Images/nophoto.jpg");
+                //$("#ImgNft").attr("src", "/Images/nophoto.jpg");
                 // Clear Product Name
-                $("#ProductoNombre").html("")
+                $("#NFTNombre").html("")
                 $("#Precio").val("");
                 $("#Cantidad").val("");
                 $("#CantidadEnInventario").val("");
@@ -106,9 +107,9 @@
                     data: { filtro: id },
                     success: function (data) {
                         response($.map(data, function (item) {
-
+                            console.log(item);
                             //debugger;
-                            return { label: item.descripcionProducto, value: item.idProducto, data: item };
+                            return { label: item.nombre, value: item.idNft, data: item };
                         }));
                     },
                     error: function (xhr, status, error) {
@@ -122,14 +123,14 @@
             select: function (event, ui) {
 
                 // Show data
-                $("#IdProducto").val(ui.item.value)
-                $("#ProductoNombre").html(ui.item.label + " - Inventario:" + ui.item.data.cantidad)
+                $("#IdNft").val(ui.item.value)
+                $("#NFTNombre").html(ui.item.label + " - Inventario: " + ui.item.data.inventario)
                 $("#Precio").val(ui.item.data.precio)
-                $("#IdProducto").focus();
+                $("#IdNft").focus();
                 // Show the image, it isn't necesary to convert to Base64 since it comes from Json
-                //$("#ImgProducto").attr("src", "data:image/jpeg;charset=utf-8;base64," + ui.item.data.imagen);
-                $("#CantidadEnInventario").val(ui.item.data.cantidad);
-
+                //$("#ImgNft").attr("src", "data:image/jpeg;charset=utf-8;base64," + ui.item.data.imagen);
+                $("#CantidadEnInventario").val(ui.item.data.inventario);
+                //$('.btn-success').prop('disabled', false);
                 return false;
             }
         });
@@ -192,12 +193,16 @@
 
 
     <script>
+        function isGuid(value) {
+            var guidRegex = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-5][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}$/;
+            return guidRegex.test(value);
+        }
 
         ///////////////////////////////////////////////////////////////////////////////////////////////
         // Add cardshoping Product
         ///////////////////////////////////////////////////////////////////////////////////////////////
         function addProduct() {
-            let idProduct = document.getElementById("IdProducto").value;
+            let idProduct = document.getElementById("IdNft").value;
             let cantidad = document.getElementById("Cantidad").value;
             let precio = document.getElementById("Precio").value;
             let divDetalleFactura = document.getElementById("divDetalleFactura");
@@ -207,7 +212,7 @@
 
 
             // Validation
-            if ($.isNumeric(idProduct) == false) {
+            if (!isGuid(idProduct)) {
                 Swal.fire({
                     title: "Error!",
                     text: "Ingrese el código del NFT!",

@@ -110,4 +110,12 @@ public class NFTController : Controller
         await _serviceNFT.UpdateAsync(id, dto);
         return RedirectToAction("Index");
     }
+
+    public async Task<IActionResult> GetProductoByName(string filtro)
+    {
+
+        var collection = await _serviceNFT.FindByDescriptionAsync(filtro);
+        return Json(collection);
+
+    }
 }

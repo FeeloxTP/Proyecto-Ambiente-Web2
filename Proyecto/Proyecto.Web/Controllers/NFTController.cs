@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Interfaces;
 
 namespace Proyecto.Web.Controllers;
 
+[Authorize(Roles = "Admin,Procesos")]
 public class NFTController : Controller
 {
     private readonly IServiceNFT _serviceNFT;
@@ -63,7 +65,7 @@ public class NFTController : Controller
     public async Task<IActionResult> Details(Guid id)
     {
         var @object = await _serviceNFT.FindByIdAsync(id);
-        return PartialView(@object);
+        return View(@object);
     }
 
     public async Task<IActionResult> Delete(Guid id)

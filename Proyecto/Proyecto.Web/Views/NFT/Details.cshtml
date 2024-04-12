@@ -1,0 +1,27 @@
+﻿@model Proyecto.Application.DTOs.NFTDTO
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-left mb-3">Detalles</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <img src="data:image/jpeg;base64,@Convert.ToBase64String(Model.Imagen)" class="card-img-top" alt="Imagen del Producto">
+                <div class="card-body">
+                    <h2 class="card-title mb-3"> @Model.Nombre</h2>
+                    <p class="card-text"><strong>Autor:</strong> @Model.Autor.ToString()</p>
+                    <p class="card-text"><strong>Código:</strong> @Model.IdNft.ToString()</p>
+                    <p class="card-text"><strong>Precio:</strong> @String.Format("{0:C}", Model.Precio)</p>
+                    <p class="card-text"><strong>Inventario:</strong> @Model.Inventario</p>
+                    <div style="display:flex; flex-wrap: wrap; gap: 10px;">
+                        <a href="/NFT/Edit/@Model.IdNft" class="btn btn-primary">Editar</a>
+                        <a href="/NFT" class="btn btn-secondary">Regresar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

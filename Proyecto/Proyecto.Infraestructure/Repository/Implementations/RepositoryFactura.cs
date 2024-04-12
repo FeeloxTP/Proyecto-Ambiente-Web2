@@ -33,9 +33,9 @@ public class RepositoryFactura : IRepositoryFactura
             // Begin Transaction
             await _context.Database.BeginTransactionAsync();
             await _context.Set<FacturaEncabezado>().AddAsync(entity);
-
+            //se agregar la fecha del dia
             entity.FechaFacturacion = DateTime.Now;
-
+            //entity.EstadoFactura = 1;
             // Withdraw from inventory
             foreach (var item in entity.FacturaDetalle)
             {
@@ -46,7 +46,7 @@ public class RepositoryFactura : IRepositoryFactura
                 // update entity product
                 _context.Set<ActivoNft>().Update(product);
             }
-              
+
             await _context.SaveChangesAsync();
             // Commit
             await _context.Database.CommitTransactionAsync();
@@ -62,15 +62,21 @@ public class RepositoryFactura : IRepositoryFactura
         }
     }
 
+    public async Task<ICollection<FacturaEncabezado>> ListAsync()
+    {
+        var collection = await _context.Set<FacturaEncabezado>().AsNoTracking().ToListAsync();
+        return collection;
+    }
+
     /// <summary>
     /// Get current NoReceipt without increment
     /// </summary>
     /// <returns></returns>
     public async Task<int> GetNextReceiptNumber()
-    { 
+    {
 
-        int current = 0; 
-        
+        int current = 0;
+
         string sql = string.Format("SELECT current_value FROM sys.sequences WHERE name = 'ReceiptNumber'");
 
         System.Data.DataTable dataTable = new System.Data.DataTable();
@@ -91,7 +97,7 @@ public class RepositoryFactura : IRepositoryFactura
 
         current = Convert.ToInt32(dataTable.Rows[0][0].ToString());
         return await Task.FromResult(current);
-        
+
     }
 
 
@@ -107,7 +113,7 @@ public class RepositoryFactura : IRepositoryFactura
     private int GetNoReceipt()
     {
         int siguiente = 0;
-       
+
         string sql = string.Format("SELECT NEXT VALUE FOR ReceiptNumber");
 
         System.Data.DataTable dataTable = new System.Data.DataTable();
@@ -127,7 +133,37 @@ public class RepositoryFactura : IRepositoryFactura
 
 
         siguiente = Convert.ToInt32(dataTable.Rows[0][0].ToString());
-        return siguiente; 
+        return siguiente;
 
+    }
+
+    public async Task<ICollection<FacturaEncabezado>> BillsByClientIdAsync(Guid id)
+    {
+        var response = await _context.Set<FacturaEncabezado>()
+                       .Include(p => p.FacturaDetalle)
+                       .Where(p => p.IdCliente == id).ToListAsync();
+
+        return response;
+
+    }
+
+    public async Task<FacturaEncabezado> FindByIdAsync(int id)
+    {
+
+        var response = await _context.Set<FacturaEncabezado>()
+                    .Include(detalle => detalle.FacturaDetalle)
+                    .ThenInclude(detalle => detalle.IdNftNavigation)
+                    .Include(cliente => cliente.IdClienteNavigation)
+                    .Where(p => p.IdFactura == id).FirstOrDefaultAsync();
+
+        return response!;
+    }
+
+    public async Task UpdateAsync(int id, FacturaEncabezado entity)
+    {
+        var @object = await FindByIdAsync(id);
+        @object.EstadoFactura = entity.EstadoFactura;
+        
+        await _context.SaveChangesAsync();
     }
 }

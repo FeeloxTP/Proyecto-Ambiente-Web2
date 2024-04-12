@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 
 namespace Proyecto.Web.Controllers;
 
+[Authorize(Roles = "Admin,Procesos")]
 public class PaisController : Controller
 {
     private readonly IServicesPais _servicePais;

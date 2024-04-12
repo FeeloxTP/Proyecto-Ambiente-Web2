@@ -12,6 +12,11 @@ public interface IRepositoryFactura
     Task<int> AddAsync(FacturaEncabezado entity);
 
     Task<int> GetNextReceiptNumber();
-   
+    Task<FacturaEncabezado> FindByIdAsync(int id);
+
+    Task<ICollection<FacturaEncabezado>> BillsByClientIdAsync(Guid id);
+
+    Task<ICollection<FacturaEncabezado>> ListAsync();
+    Task UpdateAsync(int id, FacturaEncabezado entity);
 
 }

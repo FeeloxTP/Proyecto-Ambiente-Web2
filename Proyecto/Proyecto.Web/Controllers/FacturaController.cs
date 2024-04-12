@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
@@ -6,6 +7,7 @@ using System.Text.Json;
 
 namespace Proyecto.Web.Controllers;
 
+[Authorize(Roles = "Admin,Procesos")]
 public class FacturaController : Controller
 {
     private readonly IServiceNFT _serviceNFT;
@@ -36,6 +38,30 @@ public class FacturaController : Controller
         TempData.Keep();
 
         return View();
+    }
+
+    public async Task<IActionResult> AnularFacturaIndex()
+    {
+        var collection = await _serviceFactura.ListAsync();
+        return View(collection);
+
+    }
+
+    
+    public async Task<IActionResult> CambiarEstado(int id)
+    {
+        var @object = await _serviceFactura.FindByIdAsync(id);
+        return View(@object);
+
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> CambiarEstado(int id, FacturaDTO dto)
+    {
+        await _serviceFactura.UpdateAsync(id, dto);
+        return RedirectToAction("AnularFacturaIndex");
+
     }
 
     public async Task<IActionResult> AddProduct(Guid id, int cantidad)
@@ -155,7 +181,7 @@ public class FacturaController : Controller
 
             var lista = JsonSerializer.Deserialize<List<FacturaDetalleDTO>>(json!)!;
 
-            if(lista.Count == 0 || lista == null)
+            if (lista.Count == 0 || lista == null)
             {
                 return BadRequest("No hay datos por facturar");
             }

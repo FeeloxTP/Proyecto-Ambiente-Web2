@@ -42,12 +42,28 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Error/ErrorDetail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRXJyb3JcRXJyb3JEZXRhaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/AnularFacturaIndex.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxBbnVsYXJGYWN0dXJhSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/CambiarEstado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxDYW1iaWFyRXN0YWRvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/_DetailFactura.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxfRGV0YWlsRmFjdHVyYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/ErrorHandler.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFcnJvckhhbmRsZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/Index.cshtml]
@@ -64,6 +80,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/NFT/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkZUXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/NFT/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTkZUXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/NFT/Edit.cshtml]
@@ -120,6 +140,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Usuario/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Usuario/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Usuario/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Usuario/Index.cshtml]

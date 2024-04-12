@@ -11,4 +11,8 @@ public interface IServiceFactura
 {
     Task<int> AddAsync(FacturaDTO dto);
     Task<int> GetNextReceiptNumber();
+    Task<ICollection<FacturaDTO>> ListAsync();
+    Task UpdateAsync(int id, FacturaDTO dto);
+    Task<FacturaDTO> FindByIdAsync(int id);
+
 }

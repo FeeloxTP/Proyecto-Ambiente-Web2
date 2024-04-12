@@ -7,8 +7,9 @@
 <h1>Index</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" asp-controller="Usuario" class="btn btn-primary">Crear <spam class="bi-plus-circle-fill"></spam></a>
 </p>
+
 <table class="table">
     <thead>
         <tr>
@@ -16,13 +17,7 @@
                 @Html.DisplayNameFor(model => model.Login)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdPerfil)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.DescripcionPerfil)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre)
@@ -38,18 +33,12 @@
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
+            <tr id="row_@item.Login">
             <td>
                 @Html.DisplayFor(modelItem => item.Login)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdPerfil)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.DescripcionPerfil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Nombre)
@@ -60,12 +49,64 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Estado)
             </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-            </td>
+                <td>
+                    @Html.ActionLink(" Edit", "Edit", new { id = item.Login }, new { @class = "btn btn-success    bi-eye-fill  " }) |
+                    <a data-ajax="true" class="btn btn-secondary  bi-info-circle"
+                       data-ajax-complete="onComplete"
+                       data-ajax-mode="replace"
+                       href='@Url.Action("Details", "Usuario", new { id  = item.Login })'>
+                        Detalles
+                    </a>
+                    |
+                    <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem(@item.Login, '@item.Nombre')">Eliminar</button>
+                </td>
         </tr>
 }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+
+        function onComplete(data) {
+            Swal.fire({
+                title: 'Detalles ',
+                html: data.responseText,
+                showDenyButton: false,
+                showOkButton: false,
+                showCancelButton: false,
+            })
+        };
+
+        function deleteItem(id, name) {
+            Swal.fire({
+                title: '¿Eliminar Usuario?',
+                html: '¿Estás seguro de que quieres eliminar la Usuario <strong>' + name + '</strong>?<br>Esta acción no se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminarlo',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const myRequest = "/Usuario/DeleteConfirm?id=" + id;
+                    fetch(myRequest, {
+                        method: 'POST',
+                    }).then((response) => response.text())
+                        .then((text) => {
+                            console.log(text);
+                            // Eliminar la fila correspondiente de la tabla
+                            document.getElementById('row_' + id).remove();
+                            Swal.fire('¡Eliminado!', '', 'success');
+                        });
+                }
+            });
+        }
+
+
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

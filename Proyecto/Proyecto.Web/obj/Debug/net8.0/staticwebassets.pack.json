@@ -5,6 +5,46 @@
       "PackagePath": "staticwebassets\\Proyecto.Web.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\_b10ebc6c-cd6f-49ae-be62-8fb799e72e90.jpg",
+      "PackagePath": "staticwebassets\\Images\\_b10ebc6c-cd6f-49ae-be62-8fb799e72e90.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\ai-generated-8631634_1920.jpg",
+      "PackagePath": "staticwebassets\\Images\\ai-generated-8631634_1920.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\ai-generated-8665850_1920.jpg",
+      "PackagePath": "staticwebassets\\Images\\ai-generated-8665850_1920.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\barbora-dostalova-yYuW_7uTOzY-unsplash.jpg",
+      "PackagePath": "staticwebassets\\Images\\barbora-dostalova-yYuW_7uTOzY-unsplash.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\galaxy-7040416_1920.png",
+      "PackagePath": "staticwebassets\\Images\\galaxy-7040416_1920.png"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\halloween-7487706_1920.jpg",
+      "PackagePath": "staticwebassets\\Images\\halloween-7487706_1920.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\login_1000997.png",
+      "PackagePath": "staticwebassets\\Images\\login_1000997.png"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\logo1.jpg",
+      "PackagePath": "staticwebassets\\Images\\logo1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\nophoto.jpg",
+      "PackagePath": "staticwebassets\\Images\\nophoto.jpg"
+    },
+    {
+      "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\Images\\profile.png",
+      "PackagePath": "staticwebassets\\Images\\profile.png"
+    },
+    {
       "Id": "C:\\Users\\luisf\\Documents\\Proyecto-Ambiente-Web2\\Proyecto\\Proyecto.Web\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

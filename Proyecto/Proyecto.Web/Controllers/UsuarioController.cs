@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
+using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 
 namespace Proyecto.Web.Controllers;
 
+[Authorize(Roles = "Admin")]
 public class UsuarioController : Controller
 {
     private readonly IServiceUsuario _serviceUsuario;
@@ -69,13 +72,14 @@ public class UsuarioController : Controller
     public async Task<IActionResult> Details(string id)
     {
         var @object = await _serviceUsuario.FindByIdAsync(id);
-        return View(@object);
+        return PartialView(@object);
     }
 
     // GET: UsuarioController/Edit/5
     public async Task<IActionResult> Edit(string id)
     {
         var @object = await _serviceUsuario.FindByIdAsync(id);
+        ViewBag.ListaPerfiles = await _servicePeril.ListAsync();
         return View(@object);
     }
 
@@ -97,8 +101,7 @@ public class UsuarioController : Controller
 
     // POST: UsuarioController/Delete/5
     [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Delete(string id, IFormCollection collection)
+    public async Task<IActionResult> DeleteConfirm(string id)
     {
         await _serviceUsuario.DeleteAsync(id);
         return RedirectToAction("Index");

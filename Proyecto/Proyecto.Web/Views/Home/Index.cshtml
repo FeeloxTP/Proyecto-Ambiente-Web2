@@ -3,6 +3,96 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <img id="logo" src="/Images/_b10ebc6c-cd6f-49ae-be62-8fb799e72e90.jpg" alt="...">
 </div>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="/Images/barbora-dostalova-yYuW_7uTOzY-unsplash.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Bienvenido a nuestra tienda NFT</h5>
+                <p>Explora nuestra amplia colección de NFT únicos y valiosos.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/Images/ai-generated-8631634_1920.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Arte NFT exclusivo</h5>
+                <p>Descubre obras de arte digitales creadas por talentosos artistas de todo el mundo.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/Images/ai-generated-8665850_1920.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>NFTs de edición limitada</h5>
+                <p>Adquiere NFTs de edición limitada que aumentan en valor con el tiempo.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/Images/halloween-7487706_1920.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Coleccionables NFT</h5>
+                <p>Explora nuestra gama de coleccionables NFT, desde tarjetas de deportes hasta figuras de acción digitales.</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="/Images/galaxy-7040416_1920.png" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+                <h5>Invierte en el futuro</h5>
+                <p>Con los NFTs, estás invirtiendo en el futuro del arte y los coleccionables. ¡Únete a la revolución digital hoy!</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<style>
+    .carousel-inner {
+        border-radius: 15px;
+    }
+
+    #logo {
+        width: 200px;
+        text-align: center;
+        margin-bottom: 25px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 8rem; /* Radio de los bordes, ajusta este valor para cambiar el grado de redondez */
+    }
+
+    #carouselExampleIndicators {
+        border-radius: 15px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        width: 100%;
+        margin: auto;
+    }
+
+    .carousel-item img {
+        width: 300px;
+        height: 50vh;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .carousel-caption {
+        background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+        border-radius: 15px;
+        color: white; /* Texto blanco para contraste */
+        text-align: center; /* Centra el texto */
+        padding: 10px; /* Espacio alrededor del texto */
+    }
+</style>

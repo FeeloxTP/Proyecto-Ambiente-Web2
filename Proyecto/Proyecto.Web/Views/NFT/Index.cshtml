@@ -14,6 +14,9 @@
                 @Html.DisplayNameFor(model => model.IdNft)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
@@ -25,66 +28,46 @@
             <th>
                 @Html.DisplayNameFor(model => model.Inventario)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
             <tr id="row_@item.IdNft">
-            <td>
-                @Html.DisplayFor(modelItem => item.IdNft)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Autor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Precio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inventario)
-            </td>
                 <td>
-                    @*@Html.DisplayFor(modelItem => item.Imagen)*@
-                    <!-- Show Image as Base64-->
+                    @Html.DisplayFor(modelItem => item.IdNft)
+                </td>
+                <td>
                     <input type="image" src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.Imagen)"
                            id="ImagenProducto" style="height:75px;width:75px" class="zoom2">
                 </td>
-            <td>
-                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdNft }, new { @class = "btn btn-success    bi-eye-fill  " }) |
-                    <a data-ajax="true" class="btn btn-secondary  bi-info-circle"
-                       data-ajax-complete="onComplete"
-                       data-ajax-mode="replace"
-                       href='@Url.Action("Details", "Cliente", new { id  = item.IdNft })'>
-                        Detalles
-                    </a>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inventario)
+                </td>
+                <td>
+                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdNft }, new { @class = "btn btn-success    bi-eye-fill  " })
                     |
-
+                    @Html.ActionLink(" Details", "Details", new { id = item.IdNft }, new { @class = "btn btn-secondary  bi-info-circle" })
+                    |
                     <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.IdNft', '@item.Nombre')">Eliminar</button>
-            </td>
-        </tr>
-}
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
 
 @section Scripts {
     <script>
-
-        function onComplete(data) {
-            Swal.fire({
-                title: 'Detalles ',
-                html: data.responseText,
-                showDenyButton: false,
-                showOkButton: false,
-                showCancelButton: false,
-            })
-        };
-
         function deleteItem(id, name) {
             Swal.fire({
                 title: '¿Eliminar NFT?',
@@ -110,7 +93,6 @@
                 }
             });
         }
-
 
     </script>
     @{

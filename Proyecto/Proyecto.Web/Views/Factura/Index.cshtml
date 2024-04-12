@@ -71,6 +71,9 @@
                 <input type="number" id="Precio" readonly class="form-control" />
             </div>
             <div>
+                <img src="/Images/nophoto.jpg" class="img-responsive" style="height:100px;width:100px" id="ImgNft">
+            </div>
+            <div>
                 <label></label>
                 <button class="btn btn-primary form-control" onclick="addProduct()">Agregar</button>
             </div>
@@ -94,7 +97,7 @@
                 //debugger;
 
                 // default IMAGE NO-IMAGE
-                //$("#ImgNft").attr("src", "/Images/nophoto.jpg");
+                $("#ImgNft").attr("src", "/Images/nophoto.jpg");
                 // Clear Product Name
                 $("#NFTNombre").html("")
                 $("#Precio").val("");
@@ -128,7 +131,7 @@
                 $("#Precio").val(ui.item.data.precio)
                 $("#IdNft").focus();
                 // Show the image, it isn't necesary to convert to Base64 since it comes from Json
-                //$("#ImgNft").attr("src", "data:image/jpeg;charset=utf-8;base64," + ui.item.data.imagen);
+                $("#ImgNft").attr("src", "data:image/jpeg;charset=utf-8;base64," + ui.item.data.imagen);
                 $("#CantidadEnInventario").val(ui.item.data.inventario);
                 //$('.btn-success').prop('disabled', false);
                 return false;

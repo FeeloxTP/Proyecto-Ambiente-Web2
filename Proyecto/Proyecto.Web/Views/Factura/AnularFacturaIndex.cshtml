@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Proyecto.Application.DTOs.FacturaDTO>
+
+@{
+    ViewData["Title"] = "AnularFactura";
+}
+
+<h1>AnularFactura</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdFactura)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTarjeta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TajetaNumero)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdFactura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdTarjeta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCliente)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TajetaNumero)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EstadoFactura == 1 ? "Activo" : "Desactivado")
+                </td>
+                <td>
+                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdFactura }, new { @class = "btn btn-success    bi-eye-fill  " }) |
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

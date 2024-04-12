@@ -42,6 +42,7 @@ public class FacturaController : Controller
 
     public async Task<IActionResult> AnularFacturaIndex()
     {
+        ViewBag.clientes = await _serviceCliente.ListAsync();
         var collection = await _serviceFactura.ListAsync();
         return View(collection);
 

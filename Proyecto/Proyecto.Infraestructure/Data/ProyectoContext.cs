@@ -52,7 +52,7 @@ public partial class ProyectoContext : DbContext
         {
             entity.HasKey(e => e.IdCliente);
 
-            entity.Property(e => e.IdCliente).HasDefaultValueSql("(newid())");
+            entity.Property(e => e.IdCliente).ValueGeneratedNever();
             entity.Property(e => e.Apellido1)
                 .HasMaxLength(20)
                 .IsUnicode(false);
@@ -181,6 +181,7 @@ public partial class ProyectoContext : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Usuario_Perfil");
         });
+        modelBuilder.HasSequence("ReceiptNumber");
 
         OnModelCreatingPartial(modelBuilder);
     }

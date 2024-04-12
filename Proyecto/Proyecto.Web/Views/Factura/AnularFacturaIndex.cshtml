@@ -1,14 +1,13 @@
-﻿@model IEnumerable<Proyecto.Application.DTOs.FacturaDTO>
+﻿@using Proyecto.Application.DTOs
+@model IEnumerable<Proyecto.Application.DTOs.FacturaDTO>
 
 @{
-    ViewData["Title"] = "AnularFactura";
+    ViewData["Title"] = "Anular Factura";
 }
 
-<h1>AnularFactura</h1>
+<h1>AnularFacturaIndex</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
 <table class="table">
     <thead>
         <tr>
@@ -24,6 +23,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.TajetaNumero)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EstadoFactura)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -38,24 +40,36 @@
                     @Html.DisplayFor(modelItem => item.IdTarjeta)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IdCliente)
+                    @{
+                        //leemos el viewbag con los clientes y despues hacemos un diccionario con el id y nombre
+                        // que es mucho mejor que usar un for para recorrer cliente por cliente
+                        var clientesList = ((IEnumerable<ClienteDTO>)ViewBag.clientes).ToList();
+                        var clienteDict = clientesList.ToDictionary(c => c.IdCliente, c => c.Nombre);
+                    }
+                    @{
+                        //preguntamos si el diccionario lo tiene
+                        if (clienteDict.ContainsKey(item.IdCliente))
+                        {
+                            @clienteDict[item.IdCliente]
+                        }
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TajetaNumero)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.EstadoFactura == 1 ? "Activo" : "Desactivado")
+                    @{
+                        var estadoText = item.EstadoFactura ? "Activo" : "Inactivo";
+                        var estadoColor = item.EstadoFactura ? "green" : "red";
+                    }
+                    <span style="color: @estadoColor">
+                        @Html.Raw("<strong>" + estadoText + "</strong>")
+                    </span>
                 </td>
                 <td>
-                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdFactura }, new { @class = "btn btn-success    bi-eye-fill  " }) |
+                    @Html.ActionLink("Cambiar Estado", "CambiarEstado", new { id = item.IdFactura }, new { @class = "btn btn-success  " }) 
                 </td>
             </tr>
         }
     </tbody>
 </table>
-
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-}

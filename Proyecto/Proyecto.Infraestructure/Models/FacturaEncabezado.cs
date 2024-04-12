@@ -13,7 +13,7 @@ public partial class FacturaEncabezado
 
     public DateTime FechaFacturacion { get; set; }
 
-    public int EstadoFactura { get; set; } = 1;
+    public bool EstadoFactura { get; set; }
 
     public string TajetaNumero { get; set; } = null!;
 

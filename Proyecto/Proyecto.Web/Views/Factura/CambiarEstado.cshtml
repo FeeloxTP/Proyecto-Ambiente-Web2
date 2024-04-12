@@ -4,50 +4,96 @@
     ViewData["Title"] = "CambiarEstado";
 }
 
-<h1>CambiarEstado</h1>
+<h1>Cambiar Estado</h1>
 
-<h4>FacturaDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CambiarEstado">
+        <form asp-action="CambiarEstado" id="CambiarEstado">
+            @Html.AntiForgeryToken()
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="IdFactura" class="control-label"></label>
-                <input asp-for="IdFactura" class="form-control" />
+                <input asp-for="IdFactura" class="form-control" readonly />
                 <span asp-validation-for="IdFactura" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdTarjeta" class="control-label"></label>
-                <input asp-for="IdTarjeta" class="form-control" />
+                <input asp-for="IdTarjeta" class="form-control" readonly />
                 <span asp-validation-for="IdTarjeta" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdCliente" class="control-label"></label>
-                <input asp-for="IdCliente" class="form-control" />
+                <input asp-for="IdCliente" class="form-control" readonly />
                 <span asp-validation-for="IdCliente" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TajetaNumero" class="control-label"></label>
-                <input asp-for="TajetaNumero" class="form-control" />
+                <input asp-for="TajetaNumero" class="form-control" readonly />
                 <span asp-validation-for="TajetaNumero" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EstadoFactura" class="control-label"></label>
-                <input asp-for="EstadoFactura" class="form-control" />
-                <span asp-validation-for="EstadoFactura" class="text-danger"></span>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EstadoFactura" /> @Html.DisplayNameFor(model => model.EstadoFactura)
+                </label>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
+                |
+                <a asp-action="AnularFacturaIndex" class="btn btn-success">Regresar</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<br />
+<div id="contenedor"></div>
+<div id="loader" class="xxxx"></div>
+<br />
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+
+        document.getElementById("CambiarEstado").addEventListener("submit", function (event) {
+            // Detener la propagación del evento
+            event.preventDefault();
+            event.stopPropagation();
+
+            // Verificar si el formulario es válido
+            if (event.target.checkValidity()) {
+                // Mostrar el mensaje de confirmación
+                Swal.fire({
+                    title: '¿Estás seguro?',
+                    text: '¿Deseas cambiar el Estado de esta Tarjeta?',
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Sí, guardar cambios',
+                    cancelButtonText: 'Cancelar'
+                }).then((result) => {
+                    // Si el usuario confirma, enviar el formulario
+                    if (result.isConfirmed) {
+                        onBegin();
+                        setTimeout(function () {
+                            document.getElementById('CambiarEstado').submit();
+                        }, 1000); // Esperar 3 segundos antes de enviar el formulario
+                    }
+                });
+            } else {
+                console.log("Faltan datos por agregar");
+                // Si el formulario no es válido, no hacer nada
+            }
+        });
+
+        function onBegin() {
+            console.log("onBegin")
+            document.getElementById("loader").className = "loading";
+        }
+
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

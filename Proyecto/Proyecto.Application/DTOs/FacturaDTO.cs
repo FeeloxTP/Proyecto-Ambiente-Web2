@@ -26,7 +26,7 @@ public class FacturaDTO
     [Display(Name = "No Tarjeta")]
     public string TajetaNumero { get; set; } = null!;
 
-    public int EstadoFactura { get; set; }
+    public bool EstadoFactura { get; set; }
 
 
     public List<FacturaDetalleDTO> ListFacturaDetalle = null!;

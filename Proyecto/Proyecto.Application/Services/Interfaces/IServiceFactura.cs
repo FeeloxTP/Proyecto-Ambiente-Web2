@@ -14,5 +14,5 @@ public interface IServiceFactura
     Task<ICollection<FacturaDTO>> ListAsync();
     Task UpdateAsync(int id, FacturaDTO dto);
     Task<FacturaDTO> FindByIdAsync(int id);
-
+    Task<ICollection<FacturaDTO>> FindByClientNameAsync(string name);
 }

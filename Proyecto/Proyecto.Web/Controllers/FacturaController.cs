@@ -4,6 +4,7 @@ using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 using System.Text.Json;
+using X.PagedList;
 
 namespace Proyecto.Web.Controllers;
 
@@ -40,15 +41,24 @@ public class FacturaController : Controller
         return View();
     }
 
-    public async Task<IActionResult> AnularFacturaIndex()
+    public async Task<IActionResult> AnularFacturaIndex(int? page)
     {
         ViewBag.clientes = await _serviceCliente.ListAsync();
         var collection = await _serviceFactura.ListAsync();
-        return View(collection);
-
+        return View(collection.ToPagedList(page ?? 1, 5));
     }
 
-    
+    public async Task<IActionResult> List(string nombre)
+    {
+        if (string.IsNullOrEmpty(nombre))
+            return RedirectToAction("AnularFacturaIndex");
+
+        ViewBag.clientes = await _serviceCliente.ListAsync();
+        var collection = await _serviceFactura.FindByClientNameAsync(nombre);
+        return View("AnularFacturaIndex", collection.ToPagedList(1, 10));
+    }
+
+
     public async Task<IActionResult> CambiarEstado(int id)
     {
         var @object = await _serviceFactura.FindByIdAsync(id);

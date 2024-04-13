@@ -4,6 +4,7 @@ using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 using Proyecto.Infraestructure.Models;
+using X.PagedList;
 
 namespace Proyecto.Web.Controllers;
 
@@ -20,10 +21,19 @@ public class ClienteController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? page)
     {
         var collection = await _serviceCliente.ListAsync();
-        return View(collection);
+        return View(collection.ToPagedList(page ?? 1, 5));
+    }
+
+    public async Task<IActionResult> List(string nombre)
+    {
+        if (string.IsNullOrEmpty(nombre))
+            return RedirectToAction("Index");
+
+        var collection = await _serviceCliente.FindByNameAsync(nombre);
+        return View("index", collection.ToPagedList(1, 10));
     }
 
     public async Task<IActionResult> Create()
@@ -93,7 +103,7 @@ public class ClienteController : Controller
     public IActionResult GetClienteByName(string filtro)
     {
 
-        var collections = _serviceCliente.FindByDescriptionAsync(filtro).GetAwaiter().GetResult();
+        var collections = _serviceCliente.FindByNameAsync(filtro).GetAwaiter().GetResult();
 
         return Json(collections);
     } 

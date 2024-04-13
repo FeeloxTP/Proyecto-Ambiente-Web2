@@ -1,70 +1,98 @@
-﻿@model IEnumerable<Proyecto.Application.DTOs.NFTDTO>
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IEnumerable<Proyecto.Application.DTOs.NFTDTO>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<p>
-    <a asp-action="Create" asp-controller="NFT" class="btn btn-primary">Crear <spam class="bi-plus-circle-fill"></spam></a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdNft)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Imagen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Autor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Precio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inventario)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
-            <tr id="row_@item.IdNft">
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdNft)
-                </td>
-                <td>
-                    <input type="image" src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.Imagen)"
-                           id="ImagenProducto" style="height:75px;width:75px" class="zoom2">
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Autor)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Precio)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Inventario)
-                </td>
-                <td>
-                    @Html.ActionLink(" Edit", "Edit", new { id = item.IdNft }, new { @class = "btn btn-success    bi-eye-fill  " })
-                    |
-                    @Html.ActionLink(" Details", "Details", new { id = item.IdNft }, new { @class = "btn btn-secondary  bi-info-circle" })
-                    |
-                    <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.IdNft', '@item.Nombre')">Eliminar</button>
-                </td>
+<h1 class="mb-5">Mantenimiento NFT</h1>
+
+<form asp-controller="NFT" asp-action="List" method="get">
+    <div class="d-flex justify-content-between">
+        <p>
+            <a asp-action="Create" class="btn btn-primary">Crear <spam class="bi-plus-circle-fill"></spam></a>
+        </p>
+        <div class="d-flex flex-row-reverse">
+            <div class="px-2">
+                <input type="submit" class="btn btn-primary" value="Consultar" />
+            </div>
+            <div>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre del NFT" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover table-responsive-md table-sm mt-3" style="border-radius: 6px;  overflow: hidden; font-size:medium">
+        <thead style="background-color: black; color: #fff; cursor:pointer ; height: 50px;text-align: left; vertical-align: middle;">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdNft)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Imagen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Precio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Inventario)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.IdNft">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdNft)
+                    </td>
+                    <td>
+                        <input type="image" src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.Imagen)"
+                               id="ImagenProducto" style="height:75px;width:75px" class="zoom2">
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Precio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Inventario)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" Editar", "Edit", new { id = item.IdNft }, new { @class = "btn btn-success    bi-eye-fill  " })
+                        |
+                        @Html.ActionLink(" Detalles", "Details", new { id = item.IdNft }, new { @class = "btn btn-secondary  bi-info-circle" })
+                        |
+                        <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.IdNft', '@item.Nombre')">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@Html.PagedListPager((IPagedList)Model, page =>
+        Url.Action("Index", new { page }), new PagedListRenderOptions
+    {
+        Display = PagedListDisplayMode.Always,
+        MaximumPageNumbersToDisplay = 5,
+        LiElementClasses = new String[] { "page-item" },
+        PageClasses = new String[] { "page-link" }
+    })
 
 @section Scripts {
     <script>

@@ -39,7 +39,7 @@ namespace Proyecto.Infraestructure.Repository.Implementations
             return @object!;
         }
 
-        public async Task<ICollection<Cliente>> FindByDescriptionAsync(string description)
+        public async Task<ICollection<Cliente>> FindByNameAsync(string description)
         {
             description = description.Replace(' ', '%');
             description = "%" + description + "%";

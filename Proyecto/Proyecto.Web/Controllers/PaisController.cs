@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
+using X.PagedList;
 
 namespace Proyecto.Web.Controllers;
 
@@ -17,10 +18,19 @@ public class PaisController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? page)
     {
         var collection = await _servicePais.ListAsync();
-        return View(collection);
+        return View(collection.ToPagedList(page ?? 1, 5));
+    }
+
+    public async Task<IActionResult> List(string descripcion)
+    {
+        if (string.IsNullOrEmpty(descripcion))
+            return RedirectToAction("Index");
+
+        var collection = await _servicePais.FindByDescriptionAsync(descripcion);
+        return View("index", collection.ToPagedList(1, 10));
     }
 
     // GET: PaisController/Create

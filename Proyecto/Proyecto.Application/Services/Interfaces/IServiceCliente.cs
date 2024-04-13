@@ -9,7 +9,7 @@ namespace Proyecto.Application.Services.Interfaces;
 
 public interface IServiceCliente
 {
-    Task<ICollection<ClienteDTO>> FindByDescriptionAsync(string description);
+    Task<ICollection<ClienteDTO>> FindByNameAsync(string name);
     Task<ICollection<ClienteDTO>> ListAsync();
     Task<ClienteDTO> FindByIdAsync(Guid id);
     Task<Guid> AddAsync(ClienteDTO dto);

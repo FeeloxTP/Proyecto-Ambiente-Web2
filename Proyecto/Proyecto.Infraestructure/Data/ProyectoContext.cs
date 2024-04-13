@@ -22,6 +22,8 @@ public partial class ProyectoContext : DbContext
 
     public virtual DbSet<FacturaEncabezado> FacturaEncabezado { get; set; }
 
+    public virtual DbSet<MovimientosCompras> MovimientosCompras { get; set; }
+
     public virtual DbSet<Pais> Pais { get; set; }
 
     public virtual DbSet<Perfil> Perfil { get; set; }
@@ -92,6 +94,8 @@ public partial class ProyectoContext : DbContext
         {
             entity.HasKey(e => new { e.IdFactura, e.Secuencia });
 
+            entity.ToTable(tb => tb.HasTrigger("trgInsertMovimientos"));
+
             entity.Property(e => e.Precio).HasColumnType("numeric(18, 2)");
 
             entity.HasOne(d => d.IdFacturaNavigation).WithMany(p => p.FacturaDetalle)
@@ -124,6 +128,20 @@ public partial class ProyectoContext : DbContext
                 .HasForeignKey(d => d.IdTarjeta)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_FacturaEncabezado_Tarjeta");
+        });
+
+        modelBuilder.Entity<MovimientosCompras>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToTable("Movimientos-Compras");
+
+            entity.Property(e => e.ClienteId).HasColumnName("ClienteID");
+            entity.Property(e => e.Fecha).HasColumnType("datetime");
+            entity.Property(e => e.Id)
+                .ValueGeneratedOnAdd()
+                .HasColumnName("id");
+            entity.Property(e => e.IdNft).HasColumnName("IdNFT");
         });
 
         modelBuilder.Entity<Pais>(entity =>

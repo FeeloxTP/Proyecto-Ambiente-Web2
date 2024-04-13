@@ -163,7 +163,20 @@ public class RepositoryFactura : IRepositoryFactura
     {
         var @object = await FindByIdAsync(id);
         @object.EstadoFactura = entity.EstadoFactura;
-        
+
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<ICollection<FacturaEncabezado>> FindByClientNameAsync(string name)
+    {
+        name = name.Replace(' ', '%');
+        name = "%" + name + "%";
+        FormattableString sql = $@"SELECT fe.IdFactura, fe.IdTarjeta, fe.IdCliente, fe.FechaFacturacion, fe.EstadoFactura, fe.TajetaNumero
+                                   FROM FacturaEncabezado fe 
+                                   INNER JOIN Cliente c ON fe.IdCliente = c.IdCliente
+                                   WHERE c.Nombre + c.Apellido1 + c.Apellido2 LIKE {name};";
+
+        var collection = await _context.FacturaEncabezado.FromSql(sql).AsNoTracking().ToListAsync();
+        return collection;
     }
 }

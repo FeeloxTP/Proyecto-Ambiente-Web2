@@ -868,3 +868,7 @@ C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Pr
 C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\obj\Debug\net8.0\Proyecto.Web.pdb
 C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\obj\Debug\net8.0\Proyecto.Web.genruntimeconfig.cache
 C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\obj\Debug\net8.0\ref\Proyecto.Web.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll

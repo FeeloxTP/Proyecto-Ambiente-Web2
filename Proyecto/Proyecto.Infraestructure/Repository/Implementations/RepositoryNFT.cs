@@ -26,6 +26,7 @@ public class RepositoryNFT : IRepositoryNFT
                                     .ToListAsync();
         return collection;
     }
+
     public async Task<Guid> AddAsync(ActivoNft entity)
     {
         await _context.Set<ActivoNft>().AddAsync(entity);

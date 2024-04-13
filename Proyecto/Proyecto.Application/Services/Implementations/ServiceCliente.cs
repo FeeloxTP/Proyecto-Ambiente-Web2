@@ -33,9 +33,9 @@ namespace Proyecto.Application.Services.Implementations
             await _repository.DeleteAsync(id);
         }
 
-        public async Task<ICollection<ClienteDTO>> FindByDescriptionAsync(string description)
+        public async Task<ICollection<ClienteDTO>> FindByNameAsync(string description)
         {
-            var list = await _repository.FindByDescriptionAsync(description);
+            var list = await _repository.FindByNameAsync(description);
             var collection = _mapper.Map<ICollection<ClienteDTO>>(list);
             return collection;
         }

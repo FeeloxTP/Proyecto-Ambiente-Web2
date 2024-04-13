@@ -45,9 +45,9 @@ public class ServiceUsuario : IServiceUsuario
     }
 
 
-    public async Task<ICollection<UsuarioDTO>> FindByDescriptionAsync(string description)
+    public async Task<ICollection<UsuarioDTO>> FindByNameAsync(string description)
     {
-        var list = await _repository.FindByDescriptionAsync(description);
+        var list = await _repository.FindByNameAsync(description);
         var collection = _mapper.Map<ICollection<UsuarioDTO>>(list);
         return collection;
     }

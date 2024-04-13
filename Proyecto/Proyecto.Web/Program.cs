@@ -6,9 +6,6 @@ using Proyecto.Infraestructure.Repository.Implementations;
 using Proyecto.Infraestructure.Repository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
-using Proyecto.Web;
-using Proyecto.Application.DTOs;
-using Microsoft.Identity.Client;
 using Serilog.Events;
 using Serilog;
 using Proyecto.Web.Middleware;
@@ -45,6 +42,9 @@ builder.Services.AddTransient<IServiceUsuario, ServiceUsuario>();
 builder.Services.AddTransient<IRepositoryPerfil, RepositoryPerfil>();
 builder.Services.AddTransient<IServicePerfil, ServicePerfil>();
 
+builder.Services.AddTransient<IRepositoryMovimientosCompras, RepositoryMovimientosCompras>();
+builder.Services.AddTransient<IServiceMovimientosCompras, ServiceMovimientosCompras>();
+
 //// Security
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -74,6 +74,7 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile<FacturaProfile>();
     config.AddProfile<UsuarioProfile>();
     config.AddProfile<PerfilProfile>();
+    config.AddProfile<MovimientosComprasProfile>();
 });
 
 // Config Connection to SQLServer DataBase

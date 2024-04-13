@@ -33,7 +33,7 @@ namespace Proyecto.Infraestructure.Repository.Implementations
             _context.SaveChanges();
         }
 
-        public async Task<ICollection<Usuario>> FindByDescriptionAsync(string description)
+        public async Task<ICollection<Usuario>> FindByNameAsync(string description)
         {
             var collection = await _context
                                          .Set<Usuario>()

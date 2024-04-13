@@ -164,3 +164,17 @@ C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\obj\Debug\
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\obj\Debug\net8.0\Proyecto.API.csproj.CopyComplete
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\obj\Debug\net8.0\Proyecto.API.genruntimeconfig.cache
 C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\obj\Debug\net8.0\ref\Proyecto.API.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\HarfBuzzSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\QuestPDF.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\SkiaSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\SkiaSharp.HarfBuzz.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\osx\native\libHarfBuzzSharp.dylib
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\win-arm64\native\libHarfBuzzSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\win-x64\native\libHarfBuzzSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\win-x86\native\libHarfBuzzSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\osx\native\libSkiaSharp.dylib
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\win-arm64\native\libSkiaSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\win-x64\native\libSkiaSharp.dll
+C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.API\bin\Debug\net8.0\runtimes\win-x86\native\libSkiaSharp.dll

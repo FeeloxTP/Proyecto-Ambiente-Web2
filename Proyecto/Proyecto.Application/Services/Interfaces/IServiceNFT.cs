@@ -1,4 +1,5 @@
 ﻿using Proyecto.Application.DTOs;
+using Proyecto.Infraestructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

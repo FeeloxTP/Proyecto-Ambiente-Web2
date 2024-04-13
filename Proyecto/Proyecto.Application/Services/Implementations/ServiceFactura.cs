@@ -272,4 +272,11 @@ public class ServiceFactura : IServiceFactura
         var objectMapped = _mapper.Map<FacturaDTO>(@object);
         return objectMapped;
     }
+
+    public async Task<ICollection<FacturaDTO>> FindByClientNameAsync(string name)
+    {
+        var list = await _repositoryFactura.FindByClientNameAsync(name);
+        var collection = _mapper.Map<ICollection<FacturaDTO>>(list);
+        return collection;
+    }
 }

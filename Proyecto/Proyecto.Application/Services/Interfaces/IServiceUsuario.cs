@@ -9,7 +9,7 @@ namespace Proyecto.Application.Services.Interfaces
 {
     public interface IServiceUsuario
     {
-        Task<ICollection<UsuarioDTO>> FindByDescriptionAsync(string description);
+        Task<ICollection<UsuarioDTO>> FindByNameAsync(string name);
         Task<ICollection<UsuarioDTO>> ListAsync();
         Task<UsuarioDTO> FindByIdAsync(string id);
         Task<UsuarioDTO> LoginAsync(string id, string password);

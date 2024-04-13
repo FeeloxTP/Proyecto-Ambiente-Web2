@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Interfaces;
+using X.PagedList;
 
 namespace Proyecto.Web.Controllers;
 
@@ -16,10 +17,19 @@ public class NFTController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(int? page)
     {
         var collection = await _serviceNFT.ListAsync();
-        return View(collection);
+        return View(collection.ToPagedList(page ?? 1, 5));
+    }
+
+    public async Task<IActionResult> List(string nombre)
+    {
+        if (string.IsNullOrEmpty(nombre))
+            return RedirectToAction("Index");
+
+        var collection = await _serviceNFT.FindByNameAsync(nombre);
+        return View("index", collection.ToPagedList(1, 10));
     }
 
     public IActionResult Create()

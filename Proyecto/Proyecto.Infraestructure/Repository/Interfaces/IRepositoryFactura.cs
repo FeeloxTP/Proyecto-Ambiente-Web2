@@ -18,5 +18,5 @@ public interface IRepositoryFactura
 
     Task<ICollection<FacturaEncabezado>> ListAsync();
     Task UpdateAsync(int id, FacturaEncabezado entity);
-
+    Task<ICollection<FacturaEncabezado>> FindByClientNameAsync(string name);
 }

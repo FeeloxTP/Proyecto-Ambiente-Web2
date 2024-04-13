@@ -1,15 +1,28 @@
 ﻿@using Proyecto.Application.DTOs
 @model IEnumerable<Proyecto.Application.DTOs.FacturaDTO>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
 
 @{
     ViewData["Title"] = "Anular Factura";
 }
 
-<h1>AnularFacturaIndex</h1>
+<h1 class="mb-5">Anular factura</h1>
 
+<form asp-controller="Factura" asp-action="List" method="get">
+        <div class="d-flex flex-row-reverse">
+            <div class="px-2">
+                <input type="submit" class="btn btn-primary" value="Consultar" />
+            </div>
+            <div>
+                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre completo del cliente" />
+            </div>
+        </div>
+</form>
 
-<table class="table">
-    <thead>
+<div class="table-responsive">
+<table class="table table-striped table-hover table-responsive-md table-sm mt-3" style="border-radius: 6px; overflow: hidden; font-size:medium">
+    <thead style="background-color: black; color: #fff; cursor:pointer ; height: 50px;text-align: left; vertical-align: middle;">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.IdFactura)
@@ -67,9 +80,19 @@
                     </span>
                 </td>
                 <td>
-                    @Html.ActionLink("Cambiar Estado", "CambiarEstado", new { id = item.IdFactura }, new { @class = "btn btn-success  " }) 
+                    @Html.ActionLink("Cambiar Estado", "CambiarEstado", new { id = item.IdFactura }, new { @class = "btn btn-success  " })
                 </td>
             </tr>
         }
     </tbody>
 </table>
+</div>
+
+@Html.PagedListPager((IPagedList)Model, page =>
+                 Url.Action("AnularFacturaIndex", new { page }), new PagedListRenderOptions
+         {
+             Display = PagedListDisplayMode.Always,
+             MaximumPageNumbersToDisplay = 5,
+             LiElementClasses = new String[] { "page-item" },
+             PageClasses = new String[] { "page-link" }
+         })

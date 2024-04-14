@@ -872,3 +872,5 @@ C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\n
 C:\Users\Ismael\Desktop\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
 C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.dll
 C:\Users\luisf\Desktop\Proyecto-Ambiente-Web2\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.dll
+C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web\bin\Debug\net8.0\X.PagedList.Mvc.Core.dll

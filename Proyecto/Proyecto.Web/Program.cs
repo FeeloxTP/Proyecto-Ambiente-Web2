@@ -45,6 +45,9 @@ builder.Services.AddTransient<IServicePerfil, ServicePerfil>();
 builder.Services.AddTransient<IRepositoryMovimientosCompras, RepositoryMovimientosCompras>();
 builder.Services.AddTransient<IServiceMovimientosCompras, ServiceMovimientosCompras>();
 
+builder.Services.AddTransient<IServiceReportes, ServiceReportes>();
+
+
 //// Security
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>

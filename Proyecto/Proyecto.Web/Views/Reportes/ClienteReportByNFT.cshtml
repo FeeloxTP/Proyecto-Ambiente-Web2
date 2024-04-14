@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Proyecto.Application.DTOs.ClienteDTO>
+
+@{
+    ViewData["Title"] = "ClienteReportByNFT";
+}
+
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+
+
+
+<form asp-controller="Reportes" asp-action="ClienteReportByNFTResult" method="get"
+      data-ajax="true" asp-antiforgery="true"
+      data-ajax-method="POST"
+      data-ajax-begin="onBegin"
+      data-ajax-failure="onFailure"
+      data-ajax-success="onSuccess"
+      data-ajax-complete="onComplete">
+    <div class="d-flex justify-content-between">
+        <div class="d-flex flex-row-reverse">
+            <div class="px-2">
+                <input type="submit" class="btn btn-primary" value="Consultar" />
+            </div>
+            <div>
+                <input type="text" name="nombreNFT" id="nombreNFT" class="form-control" placeholder="Nombre del NFT" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<br />
+<div id="contenedor"></div>
+<div id="loader" class="xxxx"></div>
+<br />
+
+
+@section scripts {
+
+
+    <script>
+        function onBegin() {
+            console.log("onBegin")
+            document.getElementById("loader").className = "loading";
+
+        }
+
+        function onFailure(data) {
+            console.log(data)
+            document.getElementById("loader").className = "";
+
+
+            toastr.options.closeDuration = 2000;
+            toastr.options.closeEasing = 'swing';
+            toastr.options.progressBar = true;
+            toastr.error('Error !' + data.responseText)
+
+        }
+
+        function onSuccess(data) {
+            console.log("onSuccess")
+            document.getElementById("loader").className = "";
+
+        }
+
+        function onComplete(data) {
+
+            console.log("onComplete")
+            let div = document.getElementById("contenedor")
+            div.innerHTML = data.responseText
+            document.getElementById("loader").className = "";
+        }
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Proyecto.Application.DTOs;
 using Proyecto.Application.Services.Interfaces;
+using Proyecto.Infraestructure.Models;
 using Proyecto.Infraestructure.Repository.Interfaces;
 using QuestPDF.Fluent;
 using QuestPDF.Helpers;
@@ -10,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Proyecto.Application.Services.Implementations;
 
@@ -37,23 +39,27 @@ public class ServiceReportes : IServiceReportes
 
     public async Task<byte[]> ClienteReportByNFT(string description)
     {
-        // Get Data
-        NFTDTO nft = new NFTDTO();
-          nft =  await _repositoryNFT.FindByNameAsync(description);  
-        // Get Data  of cliente
-        var collectionMovimientos = await _repositoryMovimientosCompras.FindByIdNFT();  
-
-        var cliente 
-
-        //leemos el viewbag con los clientes y despues hacemos un diccionario con el id y nombre
-        // que es mucho mejor que usar un for para recorrer cliente por cliente
-        var clientesList = ((IEnumerable<ClienteDTO>)collection).ToList();
-        var clienteDict = clientesList.ToDictionary(c => c.IdCliente, c => c.Nombre);
-
-        //preguntamos si el diccionario lo tiene
-        if (clienteDict.ContainsKey(item.IdCliente))
+        var collectionNFT = await _repositoryNFT.FindByNameAsync(description);
+        var @object = new Cliente();
+        if (collectionNFT.Any())
         {
-            @clienteDict[item.IdCliente]
+            var nftId = collectionNFT.First().IdNft;
+            var collectionMovimientos = await _repositoryMovimientosCompras.FindByIdNFT(nftId);
+            // preguntamos cual es el dueño para despues cargar los datos de ese cliente
+            var clienteMovimientos = ((IEnumerable<MovimientosComprasDTO>)collectionMovimientos).ToList();
+            var clienteDict = clienteMovimientos.ToDictionary(c => c.Estado, c => c.ClienteId);
+
+            if (clienteDict.ContainsKey(true))
+            {
+                Guid id = clienteDict[true];
+                //cliente
+                @object = await _repositoryCliente.FindByIdAsync(id);
+            }
+        }
+        else
+        {
+            // Maneja el caso en que la colección esté vacía...
+            throw new Exception("La colección NFT está vacía.");
         }
 
         // License config ******  IMPORTANT ******
@@ -103,50 +109,52 @@ public class ServiceReportes : IServiceReportes
                         tabla.Header(header =>
                         {
                             header.Cell().Background("#4666FF")
-                            .Padding(2).AlignCenter().Text("Producto").FontColor("#fff");
+                            .Padding(2).AlignCenter().Text("Nombre").FontColor("#fff");
 
                             header.Cell().Background("#4666FF")
-                           .Padding(2).AlignCenter().Text("Foto").FontColor("#fff");
+                           .Padding(2).AlignCenter().Text("Apellido 1").FontColor("#fff");
 
                             header.Cell().Background("#4666FF")
-                           .Padding(2).AlignCenter().Text("Cantidad").FontColor("#fff");
+                           .Padding(2).AlignCenter().Text("Apellido 2").FontColor("#fff");
 
                             header.Cell().Background("#4666FF")
-                           .Padding(2).AlignCenter().Text("Precio").FontColor("#fff");
+                           .Padding(2).AlignCenter().Text("Email").FontColor("#fff");
 
                             header.Cell().Background("#4666FF")
-                           .Padding(2).AlignCenter().Text("Total").FontColor("#fff");
+                           .Padding(2).AlignCenter().Text("NFT Imagen").FontColor("#fff");
                         });
 
-                        foreach (var item in collection)
-                        {
 
+                        foreach(var item in collectionNFT)
+                        {
                             var total = item.Inventario * item.Precio;
 
                             // Column 1
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                            .Padding(2).Text(item.IdNft.ToString() + "-" + item.Nombre.PadRight(50, '.').Substring(0, 15)).FontSize(10);
+                            .Padding(2).Text(@object.Nombre).FontSize(10);
 
                             // Column 2
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                            .Padding(2).Image(item.Imagen).UseOriginalImage();
+                                                .Padding(2).AlignRight().Text(@object.Apellido1).FontSize(10);
 
                             // Column 3
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                                                .Padding(2).AlignRight().Text(item.Inventario.ToString()).FontSize(10);
+                                                .Padding(2).AlignRight().Text(@object.Apellido2).FontSize(10);
                             // Column 4
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                                                   .Padding(2).AlignRight().Text(item.Precio.ToString("###,###.00")).FontSize(10);
+                                                   .Padding(2).AlignRight().Text(@object.Email).FontSize(10);
                             // Column 5
                             tabla.Cell().BorderBottom(0.5f).BorderColor("#D9D9D9")
-                                                 .Padding(2).AlignRight().Text(total.ToString("###,###.00")).FontSize(10);
+                            .Padding(2).Image(item.Imagen).UseOriginalImage();
                         }
+                        
+
 
                     });
 
-                    var granTotal = collection.Sum(p => p.Inventario * p.Precio);
+                   // var granTotal = collection.Sum(p => p.Inventario * p.Precio);
 
-                    col1.Item().AlignRight().Text("Total " + granTotal.ToString("###,###.00")).FontSize(12).Bold();
+                   // col1.Item().AlignRight().Text("Total " + granTotal.ToString("###,###.00")).FontSize(12).Bold();
 
                 });
 

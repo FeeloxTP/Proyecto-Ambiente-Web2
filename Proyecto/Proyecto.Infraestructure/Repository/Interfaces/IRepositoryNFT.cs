@@ -10,6 +10,7 @@ namespace Proyecto.Infraestructure.Repository.Interfaces;
 public interface IRepositoryNFT
 {
     Task<ICollection<ActivoNft>> FindByNameAsync(string name);
+    Task<ICollection<ActivoNft>> FindByNameXReporteAsync(string description);
     Task<ICollection<ActivoNft>> FindByDescriptionAsync(string name);
     Task<ICollection<ActivoNft>> ListAsync();
     Task<ActivoNft> FindByIdAsync(Guid id);

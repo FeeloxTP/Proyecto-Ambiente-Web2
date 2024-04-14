@@ -9,9 +9,6 @@ namespace Proyecto.Application.Services.Interfaces;
 
 public interface IServiceReportes
 {
-    Task<byte[]> ProductReport();
-
-    Task<byte[]> ClienteReportByNFT(string description);
-
-    Task<ICollection<FacturaDTO>> BillsByClientIdAsync(Guid id);
+    Task<byte[]> ClientesReportPDF();
+    Task<byte[]> NFTsReportPDF();
 }

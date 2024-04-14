@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "NFTs PDF";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Reporte de NFTs
+        </div>
+        <div class="card-body">
+            <form asp-action="NFTsReportPDF"
+                  asp-controller="Reporte"
+                  asp-antiforgery="true"
+                  method="post"
+                  asp-antiforgery="true">
+
+                <div class="row g-3 align-items-center">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success">Descargar lista de NFTs PDF</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

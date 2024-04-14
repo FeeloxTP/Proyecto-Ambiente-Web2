@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.AspNetCore.Mvc;
 using Proyecto.Application.DTOs;
+using Proyecto.Application.Services.Implementations;
 using Proyecto.Application.Services.Interfaces;
 using Proyecto.Infraestructure.Models;
 using Proyecto.Infraestructure.Repository.Implementations;
@@ -67,6 +69,23 @@ public class ReportesController : Controller
         }
 
         return PartialView("details", cliente);
+    }
+
+    [HttpPost]
+    [RequireAntiforgeryToken]
+    public async Task<FileResult> ClientesReportPDF()
+    {
+        byte[] bytes = await _servicioReporte.ClientesReportPDF();
+        return File(bytes, "text/plain", "clientes.pdf");
+    }
+
+
+    [HttpPost]
+    [RequireAntiforgeryToken]
+    public async Task<FileResult> NFTsReportPDF()
+    {
+        byte[] bytes = await _servicioReporte.NFTsReportPDF();
+        return File(bytes, "text/plain", "NFTs.pdf");
     }
 
 }

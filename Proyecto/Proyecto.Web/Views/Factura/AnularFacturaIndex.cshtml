@@ -10,89 +10,135 @@
 <h1 class="mb-5">Anular factura</h1>
 
 <form asp-controller="Factura" asp-action="List" method="get">
-        <div class="d-flex flex-row-reverse">
-            <div class="px-2">
-                <input type="submit" class="btn btn-primary" value="Consultar" />
-            </div>
-            <div>
-                <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre completo del cliente" />
-            </div>
+    <div class="d-flex flex-row-reverse">
+        <div class="px-2">
+            <input type="submit" class="btn btn-primary" value="Consultar" />
         </div>
+        <div>
+            <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Nombre completo del cliente" />
+        </div>
+    </div>
 </form>
 
 <div class="table-responsive">
-<table class="table table-striped table-hover table-responsive-md table-sm mt-3" style="border-radius: 6px; overflow: hidden; font-size:medium">
-    <thead style="background-color: black; color: #fff; cursor:pointer ; height: 50px;text-align: left; vertical-align: middle;">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.IdFactura)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdTarjeta)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCliente)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TajetaNumero)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoFactura)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+    <table class="table table-striped table-hover table-responsive-md table-sm mt-3" style="border-radius: 6px; overflow: hidden; font-size:medium">
+        <thead style="background-color: black; color: #fff; cursor:pointer ; height: 50px;text-align: left; vertical-align: middle;">
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdFactura)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdTarjeta)
-                </td>
-                <td>
-                    @{
-                        //leemos el viewbag con los clientes y despues hacemos un diccionario con el id y nombre
-                        // que es mucho mejor que usar un for para recorrer cliente por cliente
-                        var clientesList = ((IEnumerable<ClienteDTO>)ViewBag.clientes).ToList();
-                        var clienteDict = clientesList.ToDictionary(c => c.IdCliente, c => c.Nombre);
-                    }
-                    @{
-                        //preguntamos si el diccionario lo tiene
-                        if (clienteDict.ContainsKey(item.IdCliente))
-                        {
-                            @clienteDict[item.IdCliente]
-                        }
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TajetaNumero)
-                </td>
-                <td>
-                    @{
-                        var estadoText = item.EstadoFactura ? "Activo" : "Inactivo";
-                        var estadoColor = item.EstadoFactura ? "green" : "red";
-                    }
-                    <span style="color: @estadoColor">
-                        @Html.Raw("<strong>" + estadoText + "</strong>")
-                    </span>
-                </td>
-                <td>
-                    @Html.ActionLink("Cambiar Estado", "CambiarEstado", new { id = item.IdFactura }, new { @class = "btn btn-success  " })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdFactura)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdTarjeta)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdCliente)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TajetaNumero)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EstadoFactura)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr id="row_@item.IdFactura">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdFactura)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdTarjeta)
+                    </td>
+                    <td>
+                        @{
+                            //leemos el viewbag con los clientes y despues hacemos un diccionario con el id y nombre
+                            // que es mucho mejor que usar un for para recorrer cliente por cliente
+                            var clientesList = ((IEnumerable<ClienteDTO>)ViewBag.clientes).ToList();
+                            var clienteDict = clientesList.ToDictionary(c => c.IdCliente, c => c.Nombre);
+                        }
+                        @{
+                            //preguntamos si el diccionario lo tiene
+                            if (clienteDict.ContainsKey(item.IdCliente))
+                            {
+                                @clienteDict[item.IdCliente]
+                            }
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TajetaNumero)
+                    </td>
+                    <td>
+                        @{
+                            var estadoText = item.EstadoFactura ? "Activo" : "Inactivo";
+                            var estadoColor = item.EstadoFactura ? "green" : "red";
+                        }
+                        <span style="color: @estadoColor">
+                            @Html.Raw("<strong>" + estadoText + "</strong>")
+                        </span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.IdCliente')">Eliminar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 
 @Html.PagedListPager((IPagedList)Model, page =>
-                 Url.Action("AnularFacturaIndex", new { page }), new PagedListRenderOptions
-         {
-             Display = PagedListDisplayMode.Always,
-             MaximumPageNumbersToDisplay = 5,
-             LiElementClasses = new String[] { "page-item" },
-             PageClasses = new String[] { "page-link" }
-         })
+                         Url.Action("AnularFacturaIndex", new { page }), new PagedListRenderOptions
+                     {
+                         Display = PagedListDisplayMode.Always,
+                         MaximumPageNumbersToDisplay = 5,
+                         LiElementClasses = new String[] { "page-item" },
+                         PageClasses = new String[] { "page-link" }
+                     })
+
+@section Scripts {
+    <script>
+
+        function onComplete(data) {
+            Swal.fire({
+                title: 'Detalles ',
+                html: data.responseText,
+                showDenyButton: false,
+                showOkButton: false,
+                showCancelButton: false,
+            })
+        };
+
+        function deleteItem(id) {
+            Swal.fire({
+                title: '¿Anular Factura?',
+                html: '¿Estás seguro de que quieres anular la Factura <strong>' + '</strong>?<br>Esta acción no se puede deshacer.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Sí, eliminarlo',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const myRequest = "/Factura/CambiarEstado?id=" + id;
+                    fetch(myRequest, {
+                        method: 'POST',
+                    }).then((response) => response.text())
+                        .then((text) => {
+                            console.log(text);
+                            // Eliminar la fila correspondiente de la tabla
+                            document.getElementById('row_' + id).remove();
+                            Swal.fire('¡Eliminado!', '', 'success');
+                        });
+                }
+            });
+        }
+
+
+    </script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -22,8 +22,12 @@
                 <input asp-for="Descripcion" class="form-control" />
                 <span asp-validation-for="Descripcion" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input id="btnCrear" type="submit" value="Create" class="btn btn-primary" />
+                |
+                <a asp-action="Index" class="btn btn-success">Regresar</a>
+
             </div>
         </form>
     </div>

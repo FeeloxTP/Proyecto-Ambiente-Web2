@@ -63,6 +63,7 @@ public class UsuarioController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(UsuarioDTO dto)
     {
+        var collention = await _servicePeril.ListAsync();
 
         if (!ModelState.IsValid)
         {
@@ -74,7 +75,20 @@ public class UsuarioController : Controller
             return BadRequest(errors);
         }
 
-        await _serviceUsuario.AddAsync(dto);
+        foreach(var item in collention)
+        {
+            if(dto.IdPerfil != item.IdPerfil)
+            {
+                await _serviceUsuario.AddAsync(dto);
+               
+            }
+            else
+            {
+                return BadRequest("Rol ya designado");
+            }
+        }
+
+        //await _serviceUsuario.AddAsync(dto);
         return RedirectToAction("Index");
     }
 

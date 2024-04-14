@@ -4,9 +4,8 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear NFT</h1>
 
-<h4>NFTDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -45,8 +44,11 @@
                 <input type="file" class="form-control" id="ImageFile" name="ImageFile" required />
                 <span asp-validation-for="Imagen" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                |
+                <a asp-action="Index" class="btn btn-success">Regresar</a>
             </div>
         </form>
     </div>
@@ -58,10 +60,6 @@
 
 <!-- Div para spinner -->
 <div id="loader" class=""></div>
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 
 @section scripts {
 

@@ -7,9 +7,12 @@ using Proyecto.Infraestructure.Models;
 using Proyecto.Infraestructure.Repository.Implementations;
 using Proyecto.Infraestructure.Repository.Interfaces;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Proyecto.Web.Controllers;
 
+[Authorize(Roles = "Admin,Reportes")]
 public class ReportesController : Controller
 {
     private readonly IServiceReportes _servicioReporte;
@@ -35,6 +38,16 @@ public class ReportesController : Controller
         return View();
     }
 
+    public IActionResult ReporteClientes()
+    {
+        return View();
+    }
+
+    public IActionResult ReporteNFTs()
+    {
+        return View();
+    }
+
     public IActionResult ClienteReportByNFT()
     {
         return View();
@@ -49,23 +62,33 @@ public class ReportesController : Controller
         {
             var nftId = collection.First().IdNft;
             var collectionMovimientos = await _serviceMovimientosCompras.FindByIdNFT(nftId);
-            // preguntamos cual es el dueño para despues cargar los datos de ese cliente
-            var clienteMovimientos = ((IEnumerable<MovimientosComprasDTO>)collectionMovimientos).ToList();
-            var clienteDict = clienteMovimientos.ToDictionary(c => c.Estado, c => c.ClienteId);
-
-            if (clienteDict.ContainsKey(true))
+            //validamos si tiene movimientos
+            if (collectionMovimientos.Any())
             {
-                Guid id = clienteDict[true];
-                //cliente
-                cliente = await _serviceCliente.FindByIdAsync(id);
+                // preguntamos cual es el dueño para despues cargar los datos de ese cliente
+                var clienteMovimientos = ((IEnumerable<MovimientosComprasDTO>)collectionMovimientos).ToList();
+                var clienteDict = clienteMovimientos.ToDictionary(c => c.Estado, c => c.ClienteId);
+
+                if (clienteDict.ContainsKey(true))
+                {
+                    Guid id = clienteDict[true];
+                    //cliente
+                    cliente = await _serviceCliente.FindByIdAsync(id);
+                }
+                //pasamos la info del nft a la vista para usarla con el cliente
+                ViewBag.nft = collection;
             }
-            //pasamos la info del nft a la vista para usarla con el cliente
-            ViewBag.nft = collection;
+            else
+            {
+                // Maneja el caso en que la colección esté vacía...
+                return BadRequest("No hay registros!");
+            }
+           
         }
         else
         {
             // Maneja el caso en que la colección esté vacía...
-            throw new Exception("La colección NFT está vacía.");
+            return BadRequest("No existe ese NFT!");
         }
 
         return PartialView("details", cliente);

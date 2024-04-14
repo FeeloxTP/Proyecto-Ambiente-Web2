@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Crear Cliente</h1>
 
 <hr />
 <div class="row">
@@ -39,16 +39,18 @@
 
                 <span asp-validation-for="IdPais" class="text-danger"></span>
             </div>
+            <br />
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
+                |
+                <a asp-action="Index" class="btn btn-success">Regresar</a>
+
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 <br />
 <div id="contenedor"></div>

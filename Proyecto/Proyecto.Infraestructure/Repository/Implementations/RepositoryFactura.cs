@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Proyecto.Infraestructure.Repository.Implementations;
 
@@ -36,6 +37,9 @@ public class RepositoryFactura : IRepositoryFactura
             //se agregar la fecha del dia
             entity.FechaFacturacion = DateTime.Now;
             //entity.EstadoFactura = 1;
+
+            entity.Total = entity.FacturaDetalle.Sum(p => p.Cantidad * p.Precio);
+
             // Withdraw from inventory
             foreach (var item in entity.FacturaDetalle)
             {
@@ -158,6 +162,15 @@ public class RepositoryFactura : IRepositoryFactura
 
         return response!;
     }
+    public async Task<ICollection<FacturaEncabezado>> FindByReporteXFechas(DateTime fechaInicial, DateTime fechaFinal)
+    {
+
+        var response = await _context.Set<FacturaEncabezado>()
+                    .Include(detalle => detalle.FacturaDetalle)
+                    .Where(p => p.FechaFacturacion >= fechaInicial && p.FechaFacturacion <= fechaFinal).ToListAsync();
+
+        return response!;
+    }
 
     public async Task UpdateAsync(int id, FacturaEncabezado entity)
     {
@@ -175,6 +188,22 @@ public class RepositoryFactura : IRepositoryFactura
                                    FROM FacturaEncabezado fe 
                                    INNER JOIN Cliente c ON fe.IdCliente = c.IdCliente
                                    WHERE c.Nombre + c.Apellido1 + c.Apellido2 LIKE {name};";
+
+        var collection = await _context.FacturaEncabezado.FromSql(sql).AsNoTracking().ToListAsync();
+        return collection;
+    }
+
+    public async Task<ICollection<FacturaEncabezado>> FindByVentasByFechasAsync(DateTime fechaInicial, DateTime fechaFinal)
+    {
+        //name = name.Replace(' ', '%');
+        //name = "%" + name + "%";
+        FormattableString sql = $@"SELECT Fe.IdFactura, Fe.IdTarjeta,Fe.IdCliente,
+                                   Fe.FechaFacturacion, Fe.EstadoFactura,Fe.TajetaNumero, Fe.Total
+                                   FROM FacturaEncabezado Fe
+                                   INNER JOIN Cliente c ON Fe.IdCliente = c.IdCliente
+                                   INNER JOIN FacturaDetalle fd ON Fe.IdFactura = fd.IdFactura
+                                   WHERE Fe.FechaFacturacion BETWEEN {fechaInicial} AND {fechaFinal}
+                                   GROUP BY Fe.IdCliente, Fe.IdFactura, Fe.FechaFacturacion, Fe.IdTarjeta, Fe.EstadoFactura,Fe.TajetaNumero,Fe.Total;";
 
         var collection = await _context.FacturaEncabezado.FromSql(sql).AsNoTracking().ToListAsync();
         return collection;

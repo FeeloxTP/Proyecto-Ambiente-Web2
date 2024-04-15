@@ -17,6 +17,8 @@ public partial class FacturaEncabezado
 
     public string TajetaNumero { get; set; } = null!;
 
+    public decimal Total { get; set; }
+
     public virtual ICollection<FacturaDetalle> FacturaDetalle { get; set; } = new List<FacturaDetalle>();
 
     public virtual Cliente IdClienteNavigation { get; set; } = null!;

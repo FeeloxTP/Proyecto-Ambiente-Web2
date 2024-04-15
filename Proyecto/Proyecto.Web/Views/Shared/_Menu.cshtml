@@ -42,8 +42,8 @@
                             <li><a class="dropdown-item" href="@Url.Action("ReporteClientes", "Reportes")">Lista de clientes</a></li>
                             <li><a class="dropdown-item" href="@Url.Action("ReporteNFTs", "Reportes")">Lista de NFTs</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="@Url.Action("", "")">Grafico de ventas</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("", "")">Lista de ventas</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("GraficoVentas", "Grafico")">Grafico de ventas</a></li>
+                            <li><a class="dropdown-item" href="@Url.Action("ReporteVentasByFecha", "Reportes")">Lista de ventas por fecha</a></li>
                         </ul>
                     </li>
                 }
@@ -55,6 +55,18 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="seguridadDropdown">
                             <li><a class="dropdown-item" href="@Url.Action("Index", "Usuario")">Usuario</a></li>
+                        </ul>
+                       
+                    </li>
+                }
+                @if (User.IsInRole("Admin"))
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="seguridadDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Calificación
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="seguridadDropdown">
+                            <li><a class="dropdown-item" href="@Url.Action("Index", "Calificacion")">Usuario</a></li>
                         </ul>
                     </li>
                 }

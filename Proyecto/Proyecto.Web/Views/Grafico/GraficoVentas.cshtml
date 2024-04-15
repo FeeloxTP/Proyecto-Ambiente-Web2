@@ -1,0 +1,146 @@
+﻿@{
+    ViewData["Title"] = "Productos";
+}
+
+<div class="container">
+    <div class="card">
+        <h5 class="card-header">Inventario Producto</h5>
+        <div class="card-body">
+
+            <form asp-action="VentasXCliente"
+                  asp-controller="Grafico">
+                <div class="col-auto">
+                    <label for="fechaInicial" id="label" class="form-label">Fecha inicial</label>
+                    <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+                </div>
+                <div class="col-auto">
+                    <label for="fechaFinal" id="label" class="form-label">Fecha final</label>
+                    <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+                </div>
+                <button class="btn btn-success" type="submit">Consultar</button>
+            </form>
+
+            <div class="container">
+                <div class="row mt-2 p-2 m-2 ">
+                    <div class="col-1 col-sm-6">
+                        <canvas id="myChart1" style=""></canvas>
+                    </div>
+                    <div class="col-1 col-md-6">
+                        <canvas id="myChart3" style=""></canvas>
+                    </div>
+                </div>
+                
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+
+
+    <script>
+        $(document).ready(function () {
+            Bar();
+            Pie();
+            Line();
+            Doughnut();
+        });
+
+        function Bar() {
+            if ("@ViewBag.Valores" == "")
+                return;
+
+            // find myChart Div
+            const ctx = document.getElementById('myChart1');
+            // Get Values
+            let yValues = [@ViewBag.Valores];
+            // Get Etiquetas
+            let etiquetas = "@ViewBag.clientes"
+            console.log(etiquetas)
+
+            // Convert to Array
+            let etiquetasArray = etiquetas.split(",");
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: etiquetasArray,
+                    datasets: [{
+                        label: '# NFTs',
+                        data: yValues,
+                        borderWidth: 1,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(255, 205, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(201, 203, 207, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(255, 99, 132)',
+                            'rgb(255, 159, 64)',
+                            'rgb(255, 205, 86)',
+                            'rgb(75, 192, 192)',
+                            'rgb(54, 162, 235)',
+                            'rgb(153, 102, 255)',
+                            'rgb(201, 203, 207)'
+                        ],
+                        borderWidth: 1
+                    }]
+                }
+            });
+
+        }
+
+        function Pie() {
+            if ("@ViewBag.Valores" == "")
+                return;
+            // find myChart Div
+            const ctx = document.getElementById('myChart3');
+            // Get Values
+            let yValues = [@ViewBag.cantidadNFT];
+            // Get Etiquetas
+            let etiquetas = "@ViewBag.clientes"
+            // Convert to Array
+            let etiquetasArray = etiquetas.split(",");
+
+            new Chart(ctx, {
+                type: 'pie', //
+                data: {
+                    labels: etiquetasArray,
+                    datasets: [{
+                        label: '# Total',
+                        data: yValues,
+                        borderWidth: 1
+                    }]
+                },
+            });
+        }
+
+
+
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+

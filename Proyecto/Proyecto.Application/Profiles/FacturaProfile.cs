@@ -20,6 +20,6 @@ public class FacturaProfile : Profile
              .ForMember(dest => dest.IdFactura, orig => orig.MapFrom(x => x.IdFactura))
              .ForMember(dest => dest.IdTarjeta, orig => orig.MapFrom(x => x.IdTarjeta))
              .ForMember(dest => dest.IdCliente, orig => orig.MapFrom(x => x.IdCliente))
-             .ForMember(dest => dest.FacturaDetalle, orig => orig.MapFrom(x => x.ListFacturaDetalle));
+             .ForMember(dest => dest.FacturaDetalle, orig => orig.MapFrom(x => x.ListFacturaDetalle)).ReverseMap();
     }
 }

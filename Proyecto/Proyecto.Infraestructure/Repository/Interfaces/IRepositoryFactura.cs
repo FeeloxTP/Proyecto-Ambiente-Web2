@@ -19,4 +19,7 @@ public interface IRepositoryFactura
     Task<ICollection<FacturaEncabezado>> ListAsync();
     Task UpdateAsync(int id, FacturaEncabezado entity);
     Task<ICollection<FacturaEncabezado>> FindByClientNameAsync(string name);
+    Task<ICollection<FacturaEncabezado>> FindByVentasByFechasAsync(DateTime fechaInicial, DateTime fechaFinal);
+    Task<ICollection<FacturaEncabezado>> FindByReporteXFechas(DateTime fechaInicial, DateTime fechaFinal);
+
 }

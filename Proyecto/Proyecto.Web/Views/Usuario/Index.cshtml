@@ -49,7 +49,7 @@
         <tbody>
             @foreach (var item in Model)
             {
-                <tr>
+                <tr id="row_@item.Login">
                     <td>
                         @Html.DisplayFor(modelItem => item.Login)
                     </td>
@@ -75,7 +75,7 @@
                         </a>
                         |
 
-                        <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem(@item.Login, '@item.Nombre + @item.Apellidos')">Eliminar</button>
+                        <button type="button" class="btn btn-danger bi bi-trash" onclick="deleteItem('@item.Login', '@item.Nombre  @item.Apellidos')">Eliminar</button>
                     </td>
                 </tr>
             }

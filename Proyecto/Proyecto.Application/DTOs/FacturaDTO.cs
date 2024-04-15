@@ -28,6 +28,7 @@ public class FacturaDTO
 
     public bool EstadoFactura { get; set; }
 
+    public decimal Total { get; set; }
 
     public List<FacturaDetalleDTO> ListFacturaDetalle = null!;
 }

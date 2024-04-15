@@ -16,8 +16,6 @@ public partial class ProyectoContext : DbContext
 
     public virtual DbSet<Cliente> Cliente { get; set; }
 
-    public virtual DbSet<CriptoWallet> CriptoWallet { get; set; }
-
     public virtual DbSet<FacturaDetalle> FacturaDetalle { get; set; }
 
     public virtual DbSet<FacturaEncabezado> FacturaEncabezado { get; set; }
@@ -78,18 +76,6 @@ public partial class ProyectoContext : DbContext
                 .HasConstraintName("FK_Cliente_Pais");
         });
 
-        modelBuilder.Entity<CriptoWallet>(entity =>
-        {
-            entity.HasKey(e => e.IdWallet);
-
-            entity.Property(e => e.IdWallet).ValueGeneratedNever();
-
-            entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.CriptoWallet)
-                .HasForeignKey(d => d.IdCliente)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_CriptoWallet_Cliente");
-        });
-
         modelBuilder.Entity<FacturaDetalle>(entity =>
         {
             entity.HasKey(e => new { e.IdFactura, e.Secuencia });
@@ -118,6 +104,7 @@ public partial class ProyectoContext : DbContext
             entity.Property(e => e.TajetaNumero)
                 .HasMaxLength(20)
                 .IsUnicode(false);
+            entity.Property(e => e.Total).HasColumnType("numeric(18, 2)");
 
             entity.HasOne(d => d.IdClienteNavigation).WithMany(p => p.FacturaEncabezado)
                 .HasForeignKey(d => d.IdCliente)

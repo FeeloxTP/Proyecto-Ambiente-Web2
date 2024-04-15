@@ -8,6 +8,7 @@ using Proyecto.Infraestructure.Repository.Implementations;
 using Proyecto.Infraestructure.Repository.Interfaces;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
 
 
 namespace Proyecto.Web.Controllers;
@@ -53,6 +54,10 @@ public class ReportesController : Controller
         return View();
     }
 
+    public IActionResult ReporteVentasByFecha()
+    {
+        return View();
+    }
 
     public async Task<IActionResult> ClienteReportByNFTResult(string nombreNFT)
     {
@@ -102,7 +107,6 @@ public class ReportesController : Controller
         return File(bytes, "text/plain", "clientes.pdf");
     }
 
-
     [HttpPost]
     [RequireAntiforgeryToken]
     public async Task<FileResult> NFTsReportPDF()
@@ -111,4 +115,24 @@ public class ReportesController : Controller
         return File(bytes, "text/plain", "NFTs.pdf");
     }
 
+    [HttpPost]
+    [RequireAntiforgeryToken]
+    public async Task<IActionResult> VentasReportByFechaPDF(DateTime fechaInicial, DateTime fechaFinal)
+    {
+        //fecha inicial
+        if (string.IsNullOrEmpty(fechaInicial.ToString()))
+        {
+            ViewBag.Message = "La fecha inicial es requerida";
+            return View("ReporteVentasByFecha");
+        }
+
+        if (string.IsNullOrEmpty(fechaFinal.ToString()))
+        {
+            ViewBag.Message = "La fecha final es requerida";
+            return View("ReporteVentasByFecha");
+        }
+
+        byte[] bytes = await _servicioReporte.VentaReporteByFechas(fechaInicial, fechaFinal);
+        return File(bytes, "text/plain", "ventas.pdf");
+    } 
 }

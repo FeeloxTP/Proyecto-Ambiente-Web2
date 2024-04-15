@@ -1,4 +1,5 @@
 ﻿using Proyecto.Application.DTOs;
+using Proyecto.Infraestructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,4 +16,8 @@ public interface IServiceFactura
     Task UpdateAsync(int id, FacturaDTO dto);
     Task<FacturaDTO> FindByIdAsync(int id);
     Task<ICollection<FacturaDTO>> FindByClientNameAsync(string name);
+    Task<ICollection<FacturaDTO>> FindByVentasByFechasAsync(DateTime fechaInicial, DateTime fechaFinal);
+    Task<ICollection<FacturaDTO>> FindByReporteXFechas(DateTime fechaInicial, DateTime fechaFinal);
+
+
 }

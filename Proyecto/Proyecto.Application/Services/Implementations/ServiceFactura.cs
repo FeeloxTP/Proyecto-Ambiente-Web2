@@ -273,10 +273,26 @@ public class ServiceFactura : IServiceFactura
         return objectMapped;
     }
 
+    public async Task<ICollection<FacturaDTO>> FindByReporteXFechas(DateTime fechaInicial, DateTime fechaFinal)
+    {
+        var list = await _repositoryFactura.FindByReporteXFechas(fechaInicial, fechaFinal);
+        var collection = _mapper.Map<ICollection<FacturaDTO>>(list);
+        return collection;
+    }
+
+    public async Task<ICollection<FacturaDTO>> FindByVentasByFechasAsync(DateTime fechaInicial, DateTime fechaFinal)
+    {
+        var list = await _repositoryFactura.FindByVentasByFechasAsync(fechaInicial, fechaFinal);
+        var collection = _mapper.Map<ICollection<FacturaDTO>>(list);
+        return collection;
+    }
+
     public async Task<ICollection<FacturaDTO>> FindByClientNameAsync(string name)
     {
         var list = await _repositoryFactura.FindByClientNameAsync(name);
         var collection = _mapper.Map<ICollection<FacturaDTO>>(list);
         return collection;
     }
+
+
 }

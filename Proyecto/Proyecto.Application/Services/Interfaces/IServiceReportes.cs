@@ -11,4 +11,5 @@ public interface IServiceReportes
 {
     Task<byte[]> ClientesReportPDF();
     Task<byte[]> NFTsReportPDF();
+    Task<byte[]> VentaReporteByFechas(DateTime fechaInicial, DateTime fechaFinal);
 }

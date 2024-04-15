@@ -103,6 +103,7 @@
         function onBegin() {
             console.log("onBegin")
             document.getElementById("loader").className = "loading";
+
         }
 
         function onFailure(data) {
@@ -115,6 +116,20 @@
             toastr.options.progressBar = true;
             toastr.error('Error !' + data.responseText)
 
+        }
+
+        function onSuccess(data) {
+            console.log("onSuccess")
+            document.getElementById("loader").className = "";
+
+        }
+
+        function onComplete(data) {
+
+            console.log("onComplete")
+            let div = document.getElementById("contenedor")
+            div.innerHTML = data.responseText
+            document.getElementById("loader").className = "";
         }
 
     </script>

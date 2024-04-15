@@ -1,0 +1,84 @@
+﻿@{
+    var evaluaciones = new List<dynamic>
+    {
+        new { PuntosAEvaluar = "Registros", Detalle = "", Puntos = "10 pts", Autoevaluacion = "10 pts", CalificacionProfesor = "" },
+        new { PuntosAEvaluar = "Diseño de la Arquitectura del Software", Detalle = "Estándares serilog, mensaje_toastr, control de errores.", Puntos = "10 pts", Autoevaluacion = "10 pts", CalificacionProfesor = "" },
+        // Agrega aquí el resto de tus datos...
+        new { PuntosAEvaluar = "Seguridad", Detalle = "", Puntos = "5 pts", Autoevaluacion = "5 pts", CalificacionProfesor = "" },
+        new { PuntosAEvaluar = "Mantenimientos", Detalle = "Estándares serilog, mensaje_toastr, control de errores.", Puntos = "25 pts", Autoevaluacion = "25 pts", CalificacionProfesor = "" },
+        new { PuntosAEvaluar = "Procesos", Detalle = "Venta NFT,Anulación,Cambio Propietario NFT", Puntos = "20 pts", Autoevaluacion = "20 pts", CalificacionProfesor = "" },
+        new { PuntosAEvaluar = "Rest API", Detalle = "Consulta de NFT,Nombre del NFT,Listado de NFT", Puntos = "10 pts", Autoevaluacion = "10 pts", CalificacionProfesor = "" },
+        new { PuntosAEvaluar = "Reportes", Detalle = "", Puntos = "15 pts", Autoevaluacion = "15 pts", CalificacionProfesor = "" },
+        new { PuntosAEvaluar = "Defensa del Proyecto", Detalle = "", Puntos = "5 pts", Autoevaluacion = "5 pts", CalificacionProfesor = "" },
+
+    };
+}
+<style>
+    #tabla thead {
+        background-color: #4F81BD;
+        color: white;
+    }
+
+    #tabla tbody tr:nth-child(odd) {
+        background-color: #B8CCE4; /* Tono más claro de #164753 */
+        color: black; /* Color de texto negro para las filas impares */
+    }
+
+    #tabla tbody tr:nth-child(even) {
+        background-color: #DBE5F1; /* Mismo color de fondo para las filas pares */
+        color: black; /* Color de texto negro para las filas pares */
+    }
+
+    .info-container {
+        background-color: #f8f9fa; /* Color de fondo claro */
+        border: 1px solid #dee2e6; /* Borde gris */
+        border-radius: .25rem; /* Bordes redondeados */
+        padding: 1rem; /* Espaciado interno */
+        margin-bottom: 1rem; /* Margen en la parte inferior */
+        text-align: center;
+    }
+
+        .info-container label {
+            font-weight: bold; /* Texto en negrita */
+            margin-right: .5rem; /* Margen a la derecha */
+        }
+
+        .info-container span {
+            margin-right: 2rem; /* Margen a la derecha */
+        }
+</style>
+
+<div class="info-container">
+    <label>Carné: 118920175</label>
+    <label>Nombre: Felipe Trejos Perez</label>
+    <label>Fecha:</label>
+</div>
+<div class="info-container">
+    <label>Carné: 118920175</label>
+    <label>Nombre: Felipe Trejos Perez</label>
+    <label>Fecha:</label>
+</div>
+
+<table id="tabla" class="table">
+    <thead>
+        <tr>
+            <th scope="col">Puntos a Evaluar</th>
+            <th scope="col">Detalle</th>
+            <th scope="col">Puntos</th>
+            <th scope="col">Autoevaluación</th>
+            <th scope="col">Calificación Profesor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in evaluaciones)
+        {
+            <tr>
+                <td>@item.PuntosAEvaluar</td>
+                <td>@item.Detalle</td>
+                <td>@item.Puntos</td>
+                <td>@item.Autoevaluacion</td>
+                <td>@item.CalificacionProfesor</td>
+            </tr>
+        }
+    </tbody>
+</table>

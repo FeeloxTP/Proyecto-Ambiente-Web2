@@ -75,20 +75,9 @@ public class UsuarioController : Controller
             return BadRequest(errors);
         }
 
-        foreach(var item in collention)
-        {
-            if(dto.IdPerfil != item.IdPerfil)
-            {
-                await _serviceUsuario.AddAsync(dto);
-               
-            }
-            else
-            {
-                return BadRequest("Rol ya designado");
-            }
-        }
+        
 
-        //await _serviceUsuario.AddAsync(dto);
+        await _serviceUsuario.AddAsync(dto);
         return RedirectToAction("Index");
     }
 

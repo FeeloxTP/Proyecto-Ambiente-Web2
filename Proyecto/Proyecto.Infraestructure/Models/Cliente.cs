@@ -17,8 +17,6 @@ public partial class Cliente
 
     public string IdPais { get; set; } = null!;
 
-    public virtual ICollection<CriptoWallet> CriptoWallet { get; set; } = new List<CriptoWallet>();
-
     public virtual ICollection<FacturaEncabezado> FacturaEncabezado { get; set; } = new List<FacturaEncabezado>();
 
     public virtual Pais IdPaisNavigation { get; set; } = null!;

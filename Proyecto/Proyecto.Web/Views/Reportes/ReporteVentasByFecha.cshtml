@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "VentasByFecha PDF";
+}
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            Reporte ventas por fecha
+        </div>
+        <div class="card-body">
+            <form asp-action="VentasReportByFechaPDF"
+                  asp-controller="Reportes"
+                  asp-antiforgery="true"
+                  method="post"
+                  asp-antiforgery="true" onsubmit="return validateForm()">
+
+                <div class="row g-3 align-items-end flex-lg-wrap">
+                    <div class="col-auto">
+                        <label for="fechaInicial" id="label" class="form-label">Fecha inicial</label>
+                        <input type="date" id="fechaInicial" name="fechaInicial" class="form-control">
+                    </div>
+                    <div class="col-auto">
+                        <label for="fechaFinal" id="label" class="form-label">Fecha final</label>
+                        <input type="date" id="fechaFinal" name="fechaFinal" class="form-control">
+                    </div>
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success">Consultar</button>
+                    </div>
+                </div>
+            </form>
+            <br />
+            @if (ViewBag.Message != null)
+            {
+                <div class="alert alert-danger" id="Message" role="alert">
+                    @ViewBag.Message
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+
+        function validateForm() {
+            let fechaInicial = document.getElementById("fechaInicial");
+            let fechaFinal = document.getElementById("fechaFinal");
+
+            console.log(fechaInicial.value)
+            console.log(fechaFinal.value)
+
+            if (fechaInicial.value === "" || fechaFinal.value === "")
+                return false;
+            else
+                return true;
+        }
+
+        function clearMessage() {
+            let divMessage = document.getElementById("Message");
+            // timeout to clear message
+            if (divMessage != null)
+                setTimeout(() => { divMessage.remove(); }, 3000);
+            console.log("bye");
+        }
+
+        clearMessage();
+
+    </script>
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -67,7 +67,7 @@ public class FacturaController : Controller
     }
 
     [HttpPost]
-    [ValidateAntiForgeryToken]
+    //[ValidateAntiForgeryToken]
     public async Task<IActionResult> CambiarEstado(int id, FacturaDTO dto)
     {
         await _serviceFactura.UpdateAsync(id, dto);

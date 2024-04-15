@@ -26,6 +26,14 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\luisf\Documents\Proyecto-Ambiente-Web2\Proyecto\Proyecto.Web
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Calificacion/Calificacion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsaWZpY2FjaW9uXENhbGlmaWNhY2lvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Calificacion/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FsaWZpY2FjaW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Cliente/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -60,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Factura/_DetailFactura.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFjdHVyYVxfRGV0YWlsRmFjdHVyYS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Grafico/GraficoVentas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3JhZmljb1xHcmFmaWNvVmVudGFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Home/ErrorHandler.cshtml]
@@ -124,6 +136,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Reportes/ReporteNFTs.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZU5GVHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Reportes/ReporteVentasByFecha.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZVZlbnRhc0J5RmVjaGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/luisf/Documents/Proyecto-Ambiente-Web2/Proyecto/Proyecto.Web/Views/Shared/Error.cshtml]
